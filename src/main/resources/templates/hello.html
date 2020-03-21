@@ -5,6 +5,21 @@
     <title>Hello started: Serving Web Content</title>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'"></p>
+<div>
+    <form method="post">
+        <input type="text" name="text" placeholder="Введите сообщение"/>
+        <input type="text" name="tag" placeholder="Тэг" />
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<p>Список сообщений</p>
+<th:block th:each="mes : ${message}">
+    <div>
+        <!--<b th:utext="${mes.getId()}"></b>
+        <span th:utext="${mes.text}"></span>
+        <i th:utext="${mes.getTag()}"></i>-->
+    </div>
+</th:block>
 </body>
 </html>
