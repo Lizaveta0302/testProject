@@ -1,4 +1,4 @@
-package com.example.testProject;
+package com.example.testProject.mvc;
 
 import com.example.testProject.entity.Message;
 import com.example.testProject.repos.MessageRepo;
@@ -18,14 +18,19 @@ public class HelloController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @GetMapping
+    @GetMapping("/")
+    public String home(Model model) {
+        return "home";
+    }
+
+    @GetMapping("/hello")
     public String main(Model model) {
         Iterable<Message> messages = messageRepo.findAll();
         model.addAttribute("message", messages);
         return "hello";
     }
 
-    @PostMapping
+    @PostMapping("/hello")
     public String addMessage(@RequestParam String text,
                              @RequestParam String tag,
                              Model model) {
