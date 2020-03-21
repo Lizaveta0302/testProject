@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class HelloController {
 
@@ -25,11 +27,24 @@ public class HelloController {
 
     @PostMapping
     public String addMessage(@RequestParam String text,
-                      @RequestParam String tag,
-                      Model model) {
+                             @RequestParam String tag,
+                             Model model) {
         Message message = new Message(text, tag);
         messageRepo.save(message);
-        return "redirect:/hello";
+        return "redirect:";
+    }
+
+    @PostMapping("filter")
+    public String filterMessage(@RequestParam String filter,
+                                Model model) {
+        Iterable<Message> filtered;
+        if (filter != null && !filter.isEmpty()) {
+            filtered = messageRepo.findByTag(filter);
+        } else {
+            filtered = messageRepo.findAll();
+        }
+        model.addAttribute("message", filtered);
+        return "hello";
     }
 
 }
