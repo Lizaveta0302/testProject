@@ -16,9 +16,9 @@
 <p>Список сообщений</p>
 <th:block th:each="mes : ${message}">
     <div>
-        <!--<b th:utext="${mes.getId()}"></b>
+        <b th:utext="${mes.id}"></b>
         <span th:utext="${mes.text}"></span>
-        <i th:utext="${mes.getTag()}"></i>-->
+        <i th:utext="${mes.tag}"></i>
     </div>
 </th:block>
 </body>
