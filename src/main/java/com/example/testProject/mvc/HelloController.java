@@ -1,16 +1,15 @@
 package com.example.testProject.mvc;
 
 import com.example.testProject.entity.Message;
+import com.example.testProject.entity.User;
 import com.example.testProject.repos.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 @Controller
 public class HelloController {
@@ -30,11 +29,13 @@ public class HelloController {
         return "hello";
     }
 
-    @PostMapping("/hello")
-    public String addMessage(@RequestParam String text,
-                             @RequestParam String tag,
-                             Model model) {
-        Message message = new Message(text, tag);
+    @PostMapping("hello")
+    public String addMessage(
+            @AuthenticationPrincipal User user,
+            @RequestParam String text,
+            @RequestParam String tag,
+            Model model) {
+        Message message = new Message(text, tag,user);
         messageRepo.save(message);
         return "redirect:";
     }
