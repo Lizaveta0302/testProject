@@ -11,46 +11,49 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 @Controller
-public class HelloController {
+public class MainController {
 
     @Autowired
     private MessageRepo messageRepo;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Map<String, Object> model) {
         return "home";
     }
 
-    @GetMapping("/hello")
-    public String main(Model model) {
+    @GetMapping("/main")
+    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
         Iterable<Message> messages = messageRepo.findAll();
-        model.addAttribute("message", messages);
-        return "hello";
+
+        if (filter != null && !filter.isEmpty()) {
+            messages = messageRepo.findByTag(filter);
+        } else {
+            messages = messageRepo.findAll();
+        }
+
+        model.addAttribute("messages", messages);
+        model.addAttribute("filter", filter);
+
+        return "main";
     }
 
-    @PostMapping("hello")
-    public String addMessage(
+    @PostMapping("/main")
+    public String add(
             @AuthenticationPrincipal User user,
             @RequestParam String text,
-            @RequestParam String tag,
-            Model model) {
-        Message message = new Message(text, tag,user);
+            @RequestParam String tag, Map<String, Object> model
+    ) {
+        Message message = new Message(text, tag, user);
+
         messageRepo.save(message);
-        return "redirect:";
-    }
 
-    @PostMapping("filter")
-    public String filterMessage(@RequestParam String filter,
-                                Model model) {
-        Iterable<Message> filtered;
-        if (filter != null && !filter.isEmpty()) {
-            filtered = messageRepo.findByTag(filter);
-        } else {
-            filtered = messageRepo.findAll();
-        }
-        model.addAttribute("message", filtered);
-        return "hello";
-    }
+        Iterable<Message> messages = messageRepo.findAll();
 
+        model.put("messages", messages);
+
+        return "main";
+    }
 }
