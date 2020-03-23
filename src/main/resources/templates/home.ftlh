@@ -1,5 +1,6 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-<a href="/hello">Main page</a>
+    <h5>Hello, gues</h5>
+    <div>This is a simple clone of Twitter</div>
 </@c.page>

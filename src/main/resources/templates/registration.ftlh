@@ -2,12 +2,11 @@
 <#import "parts/login.ftlh" as l>
 
 <@c.page>
-    Add new user
-    <br>
+    <div class="mb-1">Add new user</div>
 <#if message??>
     <i>${message}</i>
 <#else>
 
 </#if>
-    <@l.login "/registration" />
+    <@l.login "/registration" true />
 </@c.page>

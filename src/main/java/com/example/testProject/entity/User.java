@@ -26,6 +26,10 @@ public class User implements UserDetails {
    /* @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
     private List<Message> messages;*/
 
+   public boolean isAdmin() {
+       return roles.contains(Role.ADMIN);
+   }
+
     public Long getId() {
         return id;
     }
