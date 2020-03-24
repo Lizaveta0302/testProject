@@ -32,9 +32,6 @@ public class User implements UserDetails {
     public boolean isAdmin() {
         return roles.contains(Role.ADMIN);
     }
-    public boolean isUser() {
-        return active;
-    }
 
     public Long getId() {
         return id;

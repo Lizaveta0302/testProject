@@ -20,11 +20,16 @@
                     <a class="nav-link" href="/user">User list<span class="sr-only">(current)</span></a>
                 </li>
             </#if>
+            <#if user??>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/profile">Profile<span class="sr-only">(current)</span></a>
+                </li>
+            </#if>
         </ul>
         <div class="navbar-text mr-3">
             ${name}
         </div>
-        <#if isUser>
+        <#if user??>
             <@l.logout />
         </#if>
     </div>
