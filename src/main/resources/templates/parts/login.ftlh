@@ -34,7 +34,6 @@
                 <div class="col-sm-6">
                     <input type="password" name="password2"
                            class="form-control ${(password2Error??)?string('is-invalid', '')}"
-                           value="<#if user??>${user.password2}</#if>"
                            placeholder="Retype password"/>
                     <#if password2Error??>
                         <div class="invalid-feedback">
@@ -56,6 +55,14 @@
                         </div>
                     </#if>
                 </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="g-recaptcha" data-sitekey="6LefDOQUAAAAAKVSapqc5iZ1qq6fQKPpP3ExwL8Q"></div>
+                <#if captchaError??>
+                    <div class="alert alert-danger" role="alert">
+                        ${captchaError}
+                    </div>
+                </#if>
             </div>
         </#if>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
