@@ -20,8 +20,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
-    @Autowired
-    private MailSender mailSender;
+    //@Autowired
+    //private MailSender mailSender;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -44,17 +44,17 @@ public class UserService implements UserDetailsService {
 
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
-        user.setActivationCode(UUID.randomUUID().toString());
+        //user.setActivationCode(UUID.randomUUID().toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepo.save(user);
 
-        sendMessage(user);
+        //sendMessage(user);
 
         return true;
     }
 
-    private void sendMessage(User user) {
+   /* private void sendMessage(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" +
@@ -74,7 +74,7 @@ public class UserService implements UserDetailsService {
         user.setActivationCode(null);
         userRepo.save(user);
         return true;
-    }
+    }*/
 
     public List<User> findAll() {
         return userRepo.findAll();
@@ -97,20 +97,20 @@ public class UserService implements UserDetailsService {
         userRepo.save(user);
     }
 
-    public void updateProfile(String email, String password, User user) {
-        boolean isEmailChanged = (email != null);
+    public void updateProfile(/*String email,*/ String password, User user) {
+        /*boolean isEmailChanged = (email != null);
         if (isEmailChanged) {
             user.setEmail(email);
             if (!StringUtils.isEmpty(email)) {
                 user.setActivationCode(UUID.randomUUID().toString());
             }
-        }
+        }*/
         if (!StringUtils.isEmpty(password)) {
             user.setPassword(passwordEncoder.encode(password));
         }
         userRepo.save(user);
-        if (isEmailChanged) {
+       /* if (isEmailChanged) {
             sendMessage(user);
-        }
+        }*/
     }
 }
