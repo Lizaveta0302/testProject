@@ -26,9 +26,9 @@ public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @Value("${upload.path}")//take path from application.properties
+   /* @Value("${upload.path}")//take path from application.properties
     private String uploadPath;
-
+*/
     @GetMapping("/")
     public String home(Map<String, Object> model) {
         return "home";
@@ -55,8 +55,8 @@ public class MainController {
             @AuthenticationPrincipal User user,
             @Valid Message message,
             BindingResult bindingResult,
-            Model model,
-            @RequestParam("file") MultipartFile file
+            Model model
+           // @RequestParam("file") MultipartFile file
     ) throws IOException {
         message.setAuthor(user);
 
@@ -65,7 +65,7 @@ public class MainController {
             model.addAttribute("message", message);
             model.mergeAttributes(errorsMap);
         } else {
-            if (file != null && !file.getOriginalFilename().isEmpty()) {
+            /*if (file != null && !file.getOriginalFilename().isEmpty()) {
                 File uploadDir = new File(uploadPath);
                 if (!uploadDir.exists()) {
                     uploadDir.mkdir();
@@ -77,7 +77,7 @@ public class MainController {
                 file.transferTo(new File(uploadPath + "/" + resultFilename));
 
                 message.setFilename(resultFilename);
-            }
+            }*/
             model.addAttribute("message", null);
             messageRepo.save(message);
         }
