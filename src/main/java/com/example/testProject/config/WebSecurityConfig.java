@@ -27,11 +27,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return new MessageDigestPasswordEncoder("MD5");
-    }
-
+    /* @Bean
+     public PasswordEncoder getPasswordEncoder() {
+         return new MessageDigestPasswordEncoder("MD5");
+     }
+ */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
