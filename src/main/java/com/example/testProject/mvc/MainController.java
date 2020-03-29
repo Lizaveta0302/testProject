@@ -28,6 +28,7 @@ public class MainController {
 
     @Value("${upload.path}")//take path from application.properties
     private String uploadPath;
+
     @GetMapping("/")
     public String home(Map<String, Object> model) {
         return "home";
