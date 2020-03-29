@@ -39,8 +39,8 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(
-            @RequestParam("password2") String passwordConfirm,
             /*@RequestParam("g-recaptcha-response") String captchaResponse,*/
+            @RequestParam("password2") String passwordConfirm,
             @Valid User user,
             BindingResult bindingResult,
             Model model) {
@@ -54,12 +54,14 @@ public class RegistrationController {
         boolean isConfirmEmpty = StringUtils.isEmpty(passwordConfirm);
         if (isConfirmEmpty) {
             model.addAttribute("password2Error", "Password confirmation cannot be empty");
+            return "registration";
         }
 
         if (user.getPassword() != null && !user.getPassword().equals(passwordConfirm)) {
             model.addAttribute("passwordError", "Passwords are different");
+            return "registration";
         }
-        if (isConfirmEmpty || bindingResult.hasErrors() /*|| !response.isSuccess()*/) {
+        if (isConfirmEmpty || bindingResult.hasErrors()) {
             Map<String, String> errorMap = ControllerUtils.getErrors(bindingResult);
             model.mergeAttributes(errorMap);
             return "registration";
