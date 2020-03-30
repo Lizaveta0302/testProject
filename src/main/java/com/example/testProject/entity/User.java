@@ -21,10 +21,10 @@ public class User implements UserDetails {
     private String username;
     @NotBlank(message = "Password cannot be empty")
     private String password;
-    @Email(message = "Email is not correct")
+   /* @Email(message = "Email is not correct")
     @NotBlank(message = "Email cannot be empty")
     private String email;
-    private String activationCode;
+    private String activationCode;*/
 
     private boolean active;
 
@@ -80,7 +80,7 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public String getEmail() {
+   /* public String getEmail() {
         return email;
     }
 
@@ -95,6 +95,7 @@ public class User implements UserDetails {
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
     }
+*/
     @Override
     public boolean isAccountNonExpired() {
         return true;
