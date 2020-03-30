@@ -43,7 +43,6 @@ public class MainController {
         } else {
             messages = messageRepo.findAll();
         }
-
         model.addAttribute("messages", messages);
         model.addAttribute("filter", filter);
 

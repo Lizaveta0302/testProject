@@ -20,16 +20,16 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
-    //@Autowired
-    //private MailSender mailSender;
+    @Autowired
+    private MailSender mailSender;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user =  userRepo.findByUsername(username);
-        if(user==null){
+        User user = userRepo.findByUsername(username);
+        if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
         return user;
@@ -43,21 +43,21 @@ public class UserService implements UserDetailsService {
         }
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
-        //user.setActivationCode(UUID.randomUUID().toString());
+        user.setActivationCode(UUID.randomUUID().toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepo.save(user);
 
-        //sendMessage(user);
+        sendMessage(user);
 
         return true;
     }
 
-   /* private void sendMessage(User user) {
+    private void sendMessage(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" +
-                            "Welcome to Majorca. Please, visit next link http://localhost:8080/activate/%s",
+                            "Welcome to Majorca. Please, visit next link http://localhost:5000/activate/%s",
                     user.getUsername(),
                     user.getActivationCode()
             );
@@ -73,7 +73,7 @@ public class UserService implements UserDetailsService {
         user.setActivationCode(null);
         userRepo.save(user);
         return true;
-    }*/
+    }
 
     public List<User> findAll() {
         return userRepo.findAll();
@@ -96,20 +96,20 @@ public class UserService implements UserDetailsService {
         userRepo.save(user);
     }
 
-    public void updateProfile(/*String email,*/ String password, User user) {
-        /*boolean isEmailChanged = (email != null);
+    public void updateProfile(String email, String password, User user) {
+        boolean isEmailChanged = (email != null);
         if (isEmailChanged) {
             user.setEmail(email);
             if (!StringUtils.isEmpty(email)) {
                 user.setActivationCode(UUID.randomUUID().toString());
             }
-        }*/
+        }
         if (!StringUtils.isEmpty(password)) {
             user.setPassword(passwordEncoder.encode(password));
         }
         userRepo.save(user);
-       /* if (isEmailChanged) {
+        if (isEmailChanged) {
             sendMessage(user);
-        }*/
+        }
     }
 }
