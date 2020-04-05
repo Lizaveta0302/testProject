@@ -1,7 +1,9 @@
 package com.example.testProject.mvc;
 
+import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Message;
 import com.example.testProject.entity.User;
+import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -26,8 +29,8 @@ public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @Value("${upload.path}")//take path from application.properties
-    private String uploadPath;
+    @Autowired
+    FileRepository fileRepository;
 
     @GetMapping("/")
     public String home(Map<String, Object> model) {
@@ -55,29 +58,23 @@ public class MainController {
             @AuthenticationPrincipal User user,
             @Valid Message message,
             BindingResult bindingResult,
-            Model model
-            /*@RequestParam("file") MultipartFile file*/
+            Model model,
+            @RequestParam("uploadfile") MultipartFile file
     ) throws IOException {
-        message.setAuthor(user);
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
             model.addAttribute("message", message);
             model.mergeAttributes(errorsMap);
         } else {
-            /*if (file != null && !file.getOriginalFilename().isEmpty()) {
-                File uploadDir = new File(uploadPath);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdir();
-                }
+            if (file != null && !file.getOriginalFilename().isEmpty()) {
 
-                String uuidFile = UUID.randomUUID().toString();
-                String resultFilename = uuidFile + "." + file.getOriginalFilename();
-
-                file.transferTo(new File(uploadPath + "/" + resultFilename));
-
-                message.setFilename(resultFilename);
-            }*/
+                FileModel fileModel = new FileModel(file.getOriginalFilename(), file.getContentType(), file.getBytes());
+                fileRepository.save(fileModel);
+                message.setAuthor(user);
+                message.setFile(fileModel);
+                //fileModel.setMessage(message);
+            }
             model.addAttribute("message", null);
             messageRepo.save(message);
         }
@@ -85,6 +82,6 @@ public class MainController {
 
         model.addAttribute("messages", messages);
 
-        return "main";
+        return "redirect:/main";
     }
 }

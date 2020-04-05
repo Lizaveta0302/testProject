@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
 @Entity
 public class Message  {
@@ -23,7 +22,14 @@ public class Message  {
     @JoinColumn(name = "user_id")
     private User author;
 
-    private String filename;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "file_id")
+    private FileModel file;
+
+    /*@OneToOne(fetch = FetchType.EAGER,
+            cascade =  CascadeType.ALL,
+            mappedBy = "message")
+    private FileModel file;*/
 
     public Message() {
     }
@@ -70,11 +76,11 @@ public class Message  {
         this.tag = tag;
     }
 
-    public String getFilename() {
-        return filename;
+    public FileModel getFile() {
+        return file;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setFile(FileModel file) {
+        this.file = file;
     }
 }

@@ -16,10 +16,10 @@
     </a>
     <div class="collapse <#if message??>show</#if>" id="collapseExample">
         <div class="form-group mt-3">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" action="/main" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
-                           value="<#if message??>${message.text}</#if>" name="text" placeholder="Введите сообщение" />
+                           value="<#if message??>${message.text}</#if>" name="text" placeholder="Введите сообщение"/>
                     <#if textError??>
                         <div class="invalid-feedback">
                             ${textError}
@@ -37,11 +37,12 @@
                 </div>
                 <div class="form-group">
                     <div class="custom-file">
-                        <input type="file" name="file" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <label class="custom-file-label" for="uploadfile">Choose file</label>
+                        <input type="file" class="custom-file-input" name="uploadfile" id="uploadfile"
+                               placeholder="Upload image">
                     </div>
                 </div>
-                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Добавить</button>
                 </div>
@@ -52,9 +53,12 @@
     <div class="card-columns">
         <#list messages as message>
             <div class="card my-3" style="width: 18rem;">
-                <#if message.filename??>
-                    <img src="/img/${message.filename}" class="card-img-top">
-                </#if>
+                <div class="m-2">
+                    <#if message.file??>
+                        <b>${message.file.name}</b>
+                    <#-- <img src="/img/${message.file.name}" class="card-img-top">-->
+                    </#if>
+                </div>
                 <div class="m-2">
                     <span>${message.text}</span>
                     <i>${message.tag}</i>
