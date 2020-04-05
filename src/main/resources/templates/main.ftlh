@@ -55,8 +55,8 @@
             <div class="card my-3" style="width: 18rem;">
                 <div class="m-2">
                     <#if message.file??>
-                        <b>${message.file.name}</b>
-                    <#-- <img src="/img/${message.file.name}" class="card-img-top">-->
+                        <a href="/api/file/${message.file.id}"><b>${message.file.name}</b></a>
+                        <img src="/api/file/${message.file.id}" class="card-img-top">
                     </#if>
                 </div>
                 <div class="m-2">
