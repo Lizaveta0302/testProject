@@ -4,10 +4,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -33,8 +32,8 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-   /* @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
-    private List<Message> messages;*/
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "author")
+    private Set<Message> messages;
 
     public boolean isAdmin() {
         return roles.contains(Role.ADMIN);
@@ -80,22 +79,43 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-   /* public String getEmail() {
-        return email;
+    public Set<Message> getMessages() {
+        return messages;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 
-    public String getActivationCode() {
-        return activationCode;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id.equals(user.id);
     }
 
-    public void setActivationCode(String activationCode) {
-        this.activationCode = activationCode;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
-*/
+
+    /* public String getEmail() {
+                return email;
+            }
+
+            public void setEmail(String email) {
+                this.email = email;
+            }
+
+            public String getActivationCode() {
+                return activationCode;
+            }
+
+            public void setActivationCode(String activationCode) {
+                this.activationCode = activationCode;
+            }
+        */
     @Override
     public boolean isAccountNonExpired() {
         return true;

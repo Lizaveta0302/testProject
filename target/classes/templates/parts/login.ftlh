@@ -42,29 +42,29 @@
                     </#if>
                 </div>
             </div>
-            </#if>
-            <#--<div class="form-group row">
-                <label class="col-sm-2 col-form-label">Email:</label>
-                <div class="col-sm-6">
-                    <input type="email" name="email"
-                           class="form-control ${(emailError??)?string('is-invalid', '')}"
-                           value="<#if user??>${user.email}</#if>"
-                           placeholder="some@some.com"/>
-                    <#if emailError??>
-                        <div class="invalid-feedback">
-                            ${emailError}
-                        </div>
-                    </#if>
-                </div>
-            </div>-->
-            <#--<div class="col-sm-6">
-                <div class="g-recaptcha" data-sitekey="6LefDOQUAAAAAKVSapqc5iZ1qq6fQKPpP3ExwL8Q"></div>
-                <#if captchaError??>
-                    <div class="alert alert-danger" role="alert">
-                        ${captchaError}
+        </#if>
+        <#--<div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email:</label>
+            <div class="col-sm-6">
+                <input type="email" name="email"
+                       class="form-control ${(emailError??)?string('is-invalid', '')}"
+                       value="<#if user??>${user.email}</#if>"
+                       placeholder="some@some.com"/>
+                <#if emailError??>
+                    <div class="invalid-feedback">
+                        ${emailError}
                     </div>
                 </#if>
-            </div>-->
+            </div>
+        </div>-->
+        <#--<div class="col-sm-6">
+            <div class="g-recaptcha" data-sitekey="6LefDOQUAAAAAKVSapqc5iZ1qq6fQKPpP3ExwL8Q"></div>
+            <#if captchaError??>
+                <div class="alert alert-danger" role="alert">
+                    ${captchaError}
+                </div>
+            </#if>
+        </div>-->
         <#--</#if>-->
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <div class="mb-1">

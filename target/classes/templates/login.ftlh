@@ -13,4 +13,7 @@
         </div>
     </#if>
     <@l.login "/login" false/>
+    <div>
+        <img src="static/image/cards-test.png">
+    </div>
 </@c.page>
