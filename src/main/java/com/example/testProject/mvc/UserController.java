@@ -39,7 +39,7 @@ public class UserController {
             @RequestParam String username,
             @RequestParam Map<String, String> form,
             @RequestParam("userId") User user) {
-        userService.saveUser(user,username,form);
+        userService.saveUser(user, username, form);
         return "redirect:/user";
     }
 
@@ -55,7 +55,41 @@ public class UserController {
             /*@RequestParam String email,*/
             @RequestParam String password,
             @AuthenticationPrincipal User user) {
-        userService.updateProfile(/*email,*/password,user);
+        userService.updateProfile(/*email,*/password, user);
         return "redirect:/user/profile";
+    }
+
+    @GetMapping("subscribe/{user}")
+    public String subscribe(
+            @AuthenticationPrincipal User currentUser,
+            @PathVariable User user
+    ) {
+        userService.subscribe(currentUser, user);
+        return "redirect:/user-messages/" + user.getId();
+    }
+
+    @GetMapping("unsubscribe/{user}")
+    public String unsubscribe(
+            @PathVariable User user,
+            @AuthenticationPrincipal User currentUser
+    ) {
+        userService.unsubscribe(currentUser, user);
+        return "redirect:/user-messages/" + user.getId();
+    }
+
+    @GetMapping("{type}/{user}/list")
+    public String userList(Model model,
+                           @PathVariable User user,
+                           @PathVariable String type) {
+        model.addAttribute("userChannel", user);
+        model.addAttribute("type", type);
+
+        if ("subscriptions".equals(type)) {
+            model.addAttribute("users", user.getSubscriptions());
+        } else {
+            model.addAttribute("users", user.getSubscribers());
+        }
+
+        return "subscriptions";
     }
 }

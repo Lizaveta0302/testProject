@@ -34,14 +34,6 @@
         <div class="navbar-text mr-3">
             ${name}
         </div>
-        <#if user??>
-            <@l.logout "Sign Out"/>
-        <#else>
-            <@l.logout "Log in"/>
-            <#--<input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <a class="nav-link" href="/login">
-                <button class="btn btn-primary" type="submit">Log in</button>
-            </a>-->
-        </#if>
+        <@l.logout/>
     </div>
 </nav>

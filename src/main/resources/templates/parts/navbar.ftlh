@@ -34,10 +34,6 @@
         <div class="navbar-text mr-3">
             ${name}
         </div>
-        <#if user??>
-            <@l.logout_in "Sign Out"/>
-        <#else>
-            <@l.logout_in "Log in"/>
-        </#if>
+        <@l.logout/>
     </div>
 </nav>
