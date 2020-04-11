@@ -35,12 +35,13 @@
             ${name}
         </div>
         <#if user??>
-            <@l.logout />
+            <@l.logout "Sign Out"/>
         <#else>
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <@l.logout "Log in"/>
+            <#--<input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <a class="nav-link" href="/login">
-                <button class="btn btn-primary" type="submit">Login</button>
-            </a>
+                <button class="btn btn-primary" type="submit">Log in</button>
+            </a>-->
         </#if>
     </div>
 </nav>
