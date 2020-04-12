@@ -34,6 +34,15 @@
         <div class="navbar-text mr-3">
             ${name}
         </div>
+        <#if user??>
+            <div>
+                <#if user.file??>
+                    <div class="navbar-text mr-3 avatar">
+                        <a href="/user/private-cabinet"> <img src="/api/file/${user.file.id}" class="round"></a>
+                    </div>
+                </#if>
+            </div>
+        </#if>
         <@l.logout/>
     </div>
 </nav>

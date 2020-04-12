@@ -1,6 +1,6 @@
 <#include "security.ftlh">
 <#macro login path isRegisterForm>
-    <form action="${path}" method="post">
+    <form action="${path}" method="post" <#if isRegisterForm>enctype="multipart/form-data"</#if>>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">User Name :</label>
             <div class="col-sm-6">
@@ -41,6 +41,13 @@
                             ${password2Error}
                         </div>
                     </#if>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <label class="custom-file-label" for="uploadfile">Choose image</label>
+                    <input type="file" class="custom-file-input" name="uploadfile" id="uploadfile"
+                           placeholder="Upload image">
                 </div>
             </div>
         </#if>

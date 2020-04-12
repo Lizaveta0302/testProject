@@ -92,4 +92,18 @@ public class UserController {
 
         return "subscriptions";
     }
+
+    @GetMapping("/private-cabinet")
+    public String userMessages(
+            @AuthenticationPrincipal User user,
+            Model model
+    ) {
+        User user1 = (User) userService.loadUserByUsername(user.getUsername());
+        model.addAttribute("user", user);
+        model.addAttribute("countMessages", user1.getMessages().size());
+        model.addAttribute("followers", user1.getSubscribers().size());
+        model.addAttribute("following", user1.getSubscriptions().size());
+
+        return "privateCabinet";
+    }
 }

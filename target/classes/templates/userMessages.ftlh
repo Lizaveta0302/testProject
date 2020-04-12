@@ -8,6 +8,9 @@
             <a href="/user/subscribe/${userChannel.id}" class="btn btn-info">Subscribe</a>
         </#if>
     </#if>
+    <#if isCurrentUser>
+
+    </#if>
     <h3>${userChannel.username}</h3>
     <div class="container my-3">
         <div class="row">

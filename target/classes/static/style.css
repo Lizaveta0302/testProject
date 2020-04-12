@@ -38,3 +38,83 @@ body {
     opacity: 0.95;
     text-shadow: 0 3px 5px rgba(0, 0, 0, 0.71);
 }
+
+.round {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px #aaa;
+}
+
+.person-information-section {
+    margin: 0 auto 5%;
+    height: 500px;
+    width: 60%;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5); /* Параметры тени */
+}
+
+.private-cabinet-top {
+    background-color: rgb(216, 226, 232);
+    height: 40%;
+}
+
+.private-cabinet-bottom {
+    background-color: #f9fbff;
+    height: 60%;
+}
+
+.round-pc {
+    width: 150px;
+    height: 150px;
+    border: 5px solid azure;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px #f9fbff;
+    margin-top: -11%;
+    margin-left: 3%;
+}
+
+.edit-profile-btn {
+    text-align: right;
+    margin-right: 4%;
+    margin-top: -10%;
+}
+
+#mybtn {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.name-person {
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.count-messages {
+    margin-left: 5%;
+    margin-top: 1%;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.followers {
+    margin-top: 3%;
+    margin-left: 5%;
+}
+
+.follower {
+    font-size: 16px;
+    font-weight: 300;
+    color: black;
+}
+
+.follower:hover {
+    color: #111133;
+}
+
+.follower-block {
+    display: inline-block;
+    margin-right: 10px;
+}
+

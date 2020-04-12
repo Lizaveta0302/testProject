@@ -28,6 +28,10 @@ public class User implements UserDetails {
 
     private boolean active;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "file_id")
+    private FileModel file;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -133,22 +137,30 @@ public class User implements UserDetails {
         return Objects.hash(id);
     }
 
+    public FileModel getFile() {
+        return file;
+    }
+
+    public void setFile(FileModel file) {
+        this.file = file;
+    }
+
     /* public String getEmail() {
-                return email;
-            }
+                    return email;
+                }
 
-            public void setEmail(String email) {
-                this.email = email;
-            }
+                public void setEmail(String email) {
+                    this.email = email;
+                }
 
-            public String getActivationCode() {
-                return activationCode;
-            }
+                public String getActivationCode() {
+                    return activationCode;
+                }
 
-            public void setActivationCode(String activationCode) {
-                this.activationCode = activationCode;
-            }
-        */
+                public void setActivationCode(String activationCode) {
+                    this.activationCode = activationCode;
+                }
+            */
     @Override
     public boolean isAccountNonExpired() {
         return true;
