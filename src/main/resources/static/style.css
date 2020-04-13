@@ -1,22 +1,22 @@
 body {
     color: #113;
-
 }
 
+/*---home---*/
 .image-home {
-    background-image: url(image/fon.png);
+    background-image: url(image/fon2.png);
     top: 30%;
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-    height: 800px;
+    height: 700px;
+    margin: 0 auto;
+    max-width: 1500px;
 }
 
 .main-text {
-    margin: 0 auto;
-    text-align: center;
-    position: absolute;
-    top: 11%;
+    padding-top: 100px;
+    justify-content: center;
 }
 
 .h1-big-title {
@@ -27,18 +27,107 @@ body {
     mix-blend-mode: multiply;
 }
 
-.under-main-text {
 
+.under-main-text {
+    padding-top: 120px;
 }
 
 .h5-under-big-title {
     color: #ffefe7;
     font-family: Montserrat, Helvetica Neue, Arial, sans-serif;
     font-size: 34px;
+    text-align: center;
     opacity: 0.95;
     text-shadow: 0 3px 5px rgba(0, 0, 0, 0.71);
 }
 
+.title-text {
+    margin-left: 5%;
+}
+
+.background-section1 {
+    height: 700px;
+}
+
+.background-section2 {
+    background-color: #220c08;
+    height: 700px;
+}
+
+.background-section3 {
+    background-color: #f9fbff;
+    height: 700px;
+}
+
+.background-section4 {
+    background-color: #2c2c2c;
+    height: 700px;
+}
+
+.img-section-2 {
+    height: 850px;
+    width: 700px;
+    margin-top: -220px;
+}
+
+.img-section-2-div {
+    text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+
+    .h5-under-big-title {
+        font-size: 20px;
+    }
+
+    .img-section-2 {
+        height: 250px;
+        width: 100px;
+        margin-top: -120px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .h5-under-big-title {
+        font-size: 30px;
+        padding-top: 100px;
+    }
+
+    .image-home {
+        height: 1400px;
+        max-width: none;
+    }
+
+    .section-1 {
+        height: 1400px;
+    }
+
+    .section-2 {
+        height: 1400px;
+    }
+
+    .background-section2 {
+        height: 1400px;
+    }
+
+    .section-3 {
+        height: 1400px;
+    }
+
+    .background-section3 {
+        height: 1400px;
+    }
+
+    .section-4 {
+        height: 1400px;
+    }
+
+    .background-section4 {
+        height: 1400px;
+    }
+}
+
+/*---private cabinet---*/
 .round {
     width: 30px;
     height: 30px;

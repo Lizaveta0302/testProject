@@ -20,8 +20,8 @@
 
     <#include "navbar.ftlh">
     <#if home??>
-        <div><#nested ></div>
-    <#else >
+            <div class="container-fluid mx-0" style="padding: 0"><#nested ></div>
+    <#else>
         <div class="container mt-5">
             <#nested>
         </div>
