@@ -1,7 +1,9 @@
 package com.example.testProject.mvc;
 
+import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Role;
 import com.example.testProject.entity.User;
+import com.example.testProject.repos.FileRepository;
 import com.example.testProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,7 +11,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Map;
 
 @Controller
@@ -17,6 +21,9 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private FileRepository fileRepository;
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
@@ -54,7 +61,15 @@ public class UserController {
     public String updateProfile(
             /*@RequestParam String email,*/
             @RequestParam String password,
-            @AuthenticationPrincipal User user) {
+            @AuthenticationPrincipal User user,
+            @RequestParam("uploadfile") MultipartFile file) throws IOException {
+
+        if (file != null && !file.getOriginalFilename().isEmpty()) {
+            FileModel fileModel = new FileModel(file.getOriginalFilename(), file.getContentType(), file.getBytes());
+
+            fileRepository.save(fileModel);
+            user.setFile(fileModel);
+        }
         userService.updateProfile(/*email,*/password, user);
         return "redirect:/user/profile";
     }

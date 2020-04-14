@@ -36,11 +36,13 @@
         </div>
         <#if user??>
             <div>
-                <#if user.file??>
-                    <div class="navbar-text mr-3 avatar">
+                <div class="navbar-text mr-3 avatar">
+                    <#if user.file??>
                         <a href="/user/private-cabinet"> <img src="/api/file/${user.file.id}" class="round"></a>
-                    </div>
-                </#if>
+                    <#else>
+                        <a href="/user/private-cabinet"> <img src="/static/image/ava.png" class="round"></a>
+                    </#if>
+                </div>
             </div>
         </#if>
         <@l.logout/>

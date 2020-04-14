@@ -1,7 +1,9 @@
 package com.example.testProject.service;
 
+import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Role;
 import com.example.testProject.entity.User;
+import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.UserRepo;
 import freemarker.template.utility.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -28,8 +32,8 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user =  userRepo.findByUsername(username);
-        if(user==null){
+        User user = userRepo.findByUsername(username);
+        if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
         return user;
@@ -96,7 +100,7 @@ public class UserService implements UserDetailsService {
         userRepo.save(user);
     }
 
-    public void updateProfile(/*String email,*/ String password, User user) {
+    public void updateProfile(/*String email,*/ String password, User user) throws IOException {
         /*boolean isEmailChanged = (email != null);
         if (isEmailChanged) {
             user.setEmail(email);
@@ -107,6 +111,7 @@ public class UserService implements UserDetailsService {
         if (!StringUtils.isEmpty(password)) {
             user.setPassword(passwordEncoder.encode(password));
         }
+
         userRepo.save(user);
        /* if (isEmailChanged) {
             sendMessage(user);

@@ -8,7 +8,14 @@
         <div class="private-cabinet-bottom">
             <div class="between-top-bottom">
                 <div class="ava-foto">
-                    <a href="/api/file/${user.file.id}"> <img src="/api/file/${user.file.id}" class="round-pc"></a>
+                    <#if user.file??>
+                        <a href="/api/file/${user.file.id}">
+                            <img src="/api/file/${user.file.id}" class="round-pc">
+                        </a>
+                    <#else>
+                        <img src="/static/image/ava.png" alt="" class="round-pc"
+                             style="border: none">
+                    </#if>
                 </div>
                 <div class="edit-profile-btn">
                     <form action="/user/profile" method="get">
