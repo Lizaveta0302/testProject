@@ -1,5 +1,7 @@
 body {
     color: #113;
+    font-size: 14px;
+    font-family: Montserrat, Helvetica Neue, Arial, sans-serif;
 }
 
 /*---home---*/
@@ -49,9 +51,14 @@ body {
     height: 700px;
 }
 
+.section-2 {
+    height: auto;
+}
+
 .background-section2 {
     background-color: #220c08;
-    height: 700px;
+    padding: 40px;
+    height: auto;
 }
 
 .background-section3 {
@@ -72,6 +79,68 @@ body {
 
 .img-section-2-div {
     text-align: center;
+}
+
+/*---CARDS---*/
+.card-in-line {
+    padding: 30px;
+}
+
+.card-image {
+    max-height: 200px;
+}
+
+.rounded {
+    max-height: 200px;
+}
+
+.card .rounded {
+    border-radius: 0.18rem;
+}
+
+.card .info {
+    padding: 30px 15px;
+    text-align: center;
+    position: relative;
+}
+
+.info {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 30px 0 30px;
+    text-align: center;
+}
+
+.info .info-title {
+    margin: 25px 0 15px;
+    padding: 0 15px;
+    color: #2c2c2c;
+}
+
+.card:hover {
+    box-shadow: 0 6px 10px 0 #932d37;
+}
+
+.card .info h4 {
+    font-size: 1.5em;
+    line-height: 1.45em;
+    font-family: Montserrat, Helvetica Neue, Arial, sans-serif;
+    color: #393939;
+    opacity: 0.9;
+    letter-spacing: 0.8px;
+}
+
+.card .info p {
+    color: #959595;
+    font-family: Montserrat, Helvetica Neue, Arial, sans-serif;
+    opacity: 0.8;
+    letter-spacing: 0.6px;
+}
+
+/*---END CARDS---*/
+
+img {
+    max-width: 100%;
 }
 
 @media screen and (max-width: 576px) {

@@ -25,8 +25,75 @@
         <div class="section-2">
             <div class="background-section2">
                 <div class="container">
-                    <div class="img-section-2-div">
+                    <!--div class="img-section-2-div">
                         <img src="/static/image/section2.png" alt="" class="img-section-2">
+                    </div-->
+                    <div class="card-in-line">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img src="/static/image/section2.png" class="rounded">
+                                    </div>
+                                    <div class="info text-center">
+                                        <#-- <div class="icon">
+                                             <i class="now-ui-icons ui-1_email-85"></i>
+                                         </div>-->
+                                        <h4 class="info-title">Reply detection</h4>
+                                        <p class="description">If you get a reply, further follow-ups are automatically
+                                            stopped.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img src="/static/image/section2.png" class="rounded">
+                                    </div>
+                                    <div class="info text-center">
+                                        <div class="icon">
+                                            <i class="now-ui-icons ui-1_calendar-60"></i>
+                                        </div>
+                                        <h4 class="info-title">Follow-up</h4>
+                                        <p class="description">Just set a number of days that you want send a
+                                            follow-up. </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img src="/static/image/section2.png" class="rounded">
+                                    </div>
+                                    <div class="info text-center">
+                                        <div class="icon">
+                                            <i class="now-ui-icons ui-1_send"></i>
+                                        </div>
+                                        <h4 class="info-title">Cold email</h4>
+                                        <p class="description">Unlimited number of prospects daily with personalized
+                                            emails.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img src="/static/image/section2.png" class="rounded">
+                                    </div>
+                                    <div class="info text-center">
+                                        <div class="icon">
+                                            <i class="now-ui-icons ui-2_like"></i>
+                                        </div>
+                                        <h4 class="info-title">Teamwork</h4>
+                                        <p class="description">You and your teammates won’t address the same person
+                                            twice. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
