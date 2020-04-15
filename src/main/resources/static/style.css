@@ -55,15 +55,19 @@ body {
     height: auto;
 }
 
+.section-3 {
+    height: auto;
+}
+
 .background-section2 {
     background-color: #220c08;
-    padding: 40px;
     height: auto;
 }
 
 .background-section3 {
     background-color: #f9fbff;
-    height: 700px;
+    height: auto;
+    padding: 40px 50px;
 }
 
 .background-section4 {
@@ -72,6 +76,29 @@ body {
 }
 
 /*---Section2---*/
+
+.title-sec2 {
+    color: #fff9fc;
+    text-align: center;
+    padding: 5px 20px 20px 20px;
+}
+
+.title-sec2 h1 {
+    font-size: 44px;
+    font-weight: 300;
+}
+
+.title-sec2 p {
+    font-weight: 100;
+    font-size: 22px;
+    color: #dcdee2;
+    letter-spacing: 1px;
+    padding-top: 30px;
+}
+
+.card .sec2 {
+    margin: auto;
+}
 
 .img-section-2-div {
     margin-top: -200px;
@@ -83,6 +110,96 @@ body {
 }
 
 /*---End Section2---*/
+
+
+/*---Section3---*/
+
+.title-sec3 {
+    font-weight: 600;
+    padding-bottom: 25px;
+    padding-top: 30px;
+    font-size: 34px;
+}
+
+.section-3 .info {
+    max-width: none;
+    margin: 0 auto;
+    padding: 10px 0 0;
+}
+
+.info-horizontal {
+    text-align: left !important;
+}
+
+.info-horizontal .icon {
+    float: left;
+}
+
+.info .icon.icon-circle {
+    max-width: 80px;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-shadow: 0 9px 35px -6px rgba(0, 0, 0, .3);
+    font-size: .7142em;
+    background-color: #fff;
+    position: relative;
+}
+
+.icon.icon-primary.icon-circle {
+    box-shadow: 0 9px 35px -5px rgba(249, 99, 50, .3);
+}
+
+.info-horizontal .icon.icon-circle {
+    width: 65px;
+    height: 65px;
+    max-width: 65px;
+    margin-top: 8px;
+}
+
+.info-horizontal .icon.icon-circle i {
+    display: table;
+    margin: 0 auto;
+    line-height: 3.5;
+    font-size: 1.9em;
+}
+
+.icon1-sec3 {
+    padding: 18px;
+    vertical-align: baseline;
+}
+
+.description {
+    color: #9a9a9a;
+    font-weight: 100;
+}
+
+.info-horizontal .description {
+    overflow: hidden;
+}
+
+.info .info-title {
+    margin: 25px 0 15px;
+    padding: 0 15px;
+    color: #2c2c2c;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.info p {
+    color: #888;
+    padding: 0 15px;
+    font-size: 1.0em;
+    line-height: 1.61em;
+}
+
+.table-container {
+    margin-top: 40px;
+}
+
+/*---End Section3---*/
+
 
 /*---CARDS---*/
 .card-in-line {
@@ -108,7 +225,7 @@ body {
 }
 
 .info {
-    max-width: 300px;
+
     margin: 0 auto;
     padding: 30px 0 30px;
     text-align: center;
@@ -141,6 +258,7 @@ body {
 }
 
 /*---END CARDS---*/
+
 
 /*---messageList---*/
 .author-name-a {
