@@ -34,74 +34,76 @@
                                     connect with their Ideal Customers.</p>
                             </div>
                         </div>
-                    </div>
-                    <#--<div class="col-md-8">
-                    <div class="img-section-2-div">
-                        <img src="/static/image/ipad3.png" alt="" class="img-section-2">
-                    </div>
-                    </div>-->
-                    <div class="card-in-line">
-                        <div class="row">
-                            <div class="col-md-3" style="margin-bottom: 20px">
-                                <div class="card">
-                                    <div class="card-image sec2">
-                                        <img src="/static/image/section2.png" class="rounded">
-                                    </div>
-                                    <div class="info text-center">
-                                        <#-- <div class="icon">
-                                             <i class="now-ui-icons ui-1_email-85"></i>
-                                         </div>-->
-                                        <h4 class="info-title">Reply detection</h4>
-                                        <p class="description">If you get a reply, further follow-ups are automatically
-                                            stopped.</p>
+
+                        <#--<div class="col-md-8">
+                        <div class="img-section-2-div">
+                            <img src="/static/image/ipad3.png" alt="" class="img-section-2">
+                        </div>
+                        </div>-->
+                        <div class="card-in-line">
+                            <div class="row">
+                                <div class="col-md-3" style="margin-bottom: 20px">
+                                    <div class="card">
+                                        <div class="card-image sec2">
+                                            <img src="/static/image/section2.png" class="rounded">
+                                        </div>
+                                        <div class="info text-center">
+                                            <#-- <div class="icon">
+                                                 <i class="now-ui-icons ui-1_email-85"></i>
+                                             </div>-->
+                                            <h4 class="info-title">Reply detection</h4>
+                                            <p class="description">If you get a reply, further follow-ups are
+                                                automatically
+                                                stopped.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-3" style="margin-bottom: 20px">
-                                <div class="card">
-                                    <div class="card-image sec2">
-                                        <img src="/static/image/section2.png" class="rounded">
-                                    </div>
-                                    <div class="info text-center">
-                                        <div class="icon">
-                                            <i class="now-ui-icons ui-1_calendar-60"></i>
+                                <div class="col-md-3" style="margin-bottom: 20px">
+                                    <div class="card">
+                                        <div class="card-image sec2">
+                                            <img src="/static/image/section2.png" class="rounded">
                                         </div>
-                                        <h4 class="info-title">Follow-up</h4>
-                                        <p class="description">Just set a number of days that you want send a
-                                            follow-up. </p>
+                                        <div class="info text-center">
+                                            <div class="icon">
+                                                <i class="now-ui-icons ui-1_calendar-60"></i>
+                                            </div>
+                                            <h4 class="info-title">Follow-up</h4>
+                                            <p class="description">Just set a number of days that you want send a
+                                                follow-up. </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-3" style="margin-bottom: 20px">
-                                <div class="card">
-                                    <div class="card-image sec2">
-                                        <img src="/static/image/section2.png" class="rounded">
-                                    </div>
-                                    <div class="info text-center">
-                                        <div class="icon">
-                                            <i class="now-ui-icons ui-1_send"></i>
+                                <div class="col-md-3" style="margin-bottom: 20px">
+                                    <div class="card">
+                                        <div class="card-image sec2">
+                                            <img src="/static/image/section2.png" class="rounded">
                                         </div>
-                                        <h4 class="info-title">Cold email</h4>
-                                        <p class="description">Unlimited number of prospects daily with personalized
-                                            emails.</p>
+                                        <div class="info text-center">
+                                            <div class="icon">
+                                                <i class="now-ui-icons ui-1_send"></i>
+                                            </div>
+                                            <h4 class="info-title">Cold email</h4>
+                                            <p class="description">Unlimited number of prospects daily with personalized
+                                                emails.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-3" style="margin-bottom: 20px">
-                                <div class="card">
-                                    <div class="card-image sec2">
-                                        <img src="/static/image/section2.png" class="rounded">
-                                    </div>
-                                    <div class="info text-center">
-                                        <div class="icon">
-                                            <i class="now-ui-icons ui-2_like"></i>
+                                <div class="col-md-3" style="margin-bottom: 20px">
+                                    <div class="card">
+                                        <div class="card-image sec2">
+                                            <img src="/static/image/section2.png" class="rounded">
                                         </div>
-                                        <h4 class="info-title">Teamwork</h4>
-                                        <p class="description">You and your teammates won’t address the same person
-                                            twice. </p>
+                                        <div class="info text-center">
+                                            <div class="icon">
+                                                <i class="now-ui-icons ui-2_like"></i>
+                                            </div>
+                                            <h4 class="info-title">Teamwork</h4>
+                                            <p class="description">You and your team won’t address the same person
+                                                twice. </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +179,61 @@
         <div class="section-4">
             <div class="background-section4">
                 <div class="container">
+                    <div class="row">
+                        <div class="col-md-6" style="padding-left: 40px">
+                            <div class="col-sm-12">
+                                <div class="info info-horizontal">
+                                    <div class="icon">
+                                        <i class="material-icons">important_devices</i>
+                                    </div>
+                                    <div class="description">
+                                        <h5 class="info-title">
+                                            Save Time & Money
+                                        </h5>
+                                        <p class="description">
+                                            Creating your design from scratch with dedicated designers can be very
+                                            expensive.Using Now UI Kit PRO you don't have to worry about customising the
+                                            basic Bootstrap 4 design or its components.
+                                        </p>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon">
+                                            <i class="material-icons">library_add</i>
+                                        </div>
+                                        <div class="description">
+                                            <h5 class="info-title">
+                                                Save Time & Money
+                                            </h5>
+                                            <p class="description">
+                                                Creating your design from scratch with dedicated designers can be very
+                                                expensive.Using Now UI Kit PRO you don't have to worry about customising the
+                                                basic Bootstrap 4 design or its components.
+                                            </p>
+                                        </div>
+                                        <div class="info info-horizontal">
+                                            <div class="icon">
+                                                <i class="material-icons">forum</i>
+                                            </div>
+                                            <div class="description">
+                                                <h5 class="info-title">
+                                                    Save Time & Money
+                                                </h5>
+                                                <p class="description">
+                                                    Creating your design from scratch with dedicated designers can be very
+                                                    expensive.Using Now UI Kit PRO you don't have to worry about customising the
+                                                    basic Bootstrap 4 design or its components.
+                                                </p>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image-container">
+                                <#--<img src="/static/image/ipad3.png" alt="">-->
+                            </div>
 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

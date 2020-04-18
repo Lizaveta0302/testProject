@@ -1,5 +1,5 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/login.ftlh" as l>
+<#import "parts/new_login.ftlh" as l>
 
 <@c.page>
     <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
@@ -13,7 +13,4 @@
         </div>
     </#if>
     <@l.login "/login" false/>
-    <div>
-        <img src="static/image/cards-test.png">
-    </div>
 </@c.page>

@@ -10,7 +10,8 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
     </head>
     <#--<#if home??>-->
     <#--<body class="home-body">-->
@@ -20,7 +21,7 @@
 
     <#include "navbar.ftlh">
     <#if home??>
-            <div class="container-fluid mx-0" style="padding: 0"><#nested ></div>
+        <div class="container-fluid mx-0" style="padding: 0"><#nested ></div>
     <#else>
         <div class="container mt-5">
             <#nested>
