@@ -3,7 +3,7 @@
 <div class="card-in-line my-3">
     <div class="row">
         <#list messages as message>
-            <div class="col-md-3" style="margin-bottom: 50px">
+            <div class="col-md-3">
                 <div class="card myShadow" style="box-shadow: 0 6px 10px 0 #612127; height: 380px">
                     <div class="card-image" style="margin: auto">
                         <#if message.file??>
