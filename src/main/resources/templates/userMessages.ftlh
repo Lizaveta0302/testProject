@@ -11,7 +11,7 @@
     <#if isCurrentUser>
 
     </#if>
-    <h3>${userChannel.username}</h3>
+    <h3 style="text-align: center; font-weight: 400">${userChannel.username}</h3>
     <div class="container my-3">
         <div class="row">
             <div class="col">

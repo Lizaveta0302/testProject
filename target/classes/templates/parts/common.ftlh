@@ -12,6 +12,16 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
               rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+        <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <style>
+            .turbolinks-progress-bar{
+                height: 2px;
+                background-color: navy;
+            }
+        </style>
     </head>
     <#--<#if home??>-->
     <#--<body class="home-body">-->
@@ -28,11 +38,8 @@
         </div>
     </#if>
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+
     </body>
     </html>
 </#macro>

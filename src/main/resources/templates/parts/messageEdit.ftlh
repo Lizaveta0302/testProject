@@ -1,4 +1,4 @@
-<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+<a style="margin-left: 30px" class="btn btn-light" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
    aria-controls="collapseExample">
     Message editor
 </a>
@@ -33,7 +33,7 @@
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <input type="hidden" name="id" value="<#if message??>${message.id}</#if>"/>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Save message</button>
+                <button type="submit" class="btn btn-light">Save message</button>
             </div>
         </form>
     </div>

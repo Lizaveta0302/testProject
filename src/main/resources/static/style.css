@@ -328,11 +328,22 @@ body {
 #edit-btn {
     color: #6c252c;
     font-size: 16px;
-    padding-bottom: 0px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 /*---messageList---*/
 
+.card-footer .round {
+    margin-top: 5px;
+}
+
+#card-message-body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    overflow: auto;
+}
 
 img {
     max-width: 100%;

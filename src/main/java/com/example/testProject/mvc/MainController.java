@@ -3,8 +3,10 @@ package com.example.testProject.mvc;
 import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Message;
 import com.example.testProject.entity.User;
+import com.example.testProject.entity.dto.MessageDto;
 import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.MessageRepo;
+import com.example.testProject.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -29,6 +34,9 @@ public class MainController {
     private MessageRepo messageRepo;
 
     @Autowired
+    private MessageService messageService;
+
+    @Autowired
     FileRepository fileRepository;
 
     @GetMapping("/")
@@ -38,14 +46,10 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
-        Iterable<Message> messages = messageRepo.findAll();
+    public String main(
+            @RequestParam(required = false, defaultValue = "") String filter, Model model, @AuthenticationPrincipal User user) {
 
-        if (filter != null && !filter.isEmpty()) {
-            messages = messageRepo.findByTag(filter);
-        } else {
-            messages = messageRepo.findAll();
-        }
+        Iterable<MessageDto> messages = messageService.messageList(filter, user);
 
         model.addAttribute("messages", messages);
         model.addAttribute("filter", filter);
@@ -113,8 +117,9 @@ public class MainController {
             Model model,
             @RequestParam(required = false) Message message
     ) {
-        Set<Message> messages = user.getMessages();
 
+        //Set<Message> messages = user.getMessages();
+        Iterable<MessageDto> messages = messageService.messageListForUser(currentUser, user);
         model.addAttribute("userChannel", user);
         model.addAttribute("subscriptionsCount", user.getSubscriptions().size());
         model.addAttribute("subscribersCount", user.getSubscribers().size());
@@ -142,9 +147,25 @@ public class MainController {
             if (!StringUtils.isEmpty(tag)) {
                 message.setTag(tag);
             }
-            saveFile(message,file);
+            saveFile(message, file);
             messageRepo.save(message);
         }
         return "redirect:/user-messages/" + user.getId();
+    }
+
+    @GetMapping("/messages/{message}/like")
+    public String like(
+            @AuthenticationPrincipal User currentUser,
+            @PathVariable Message message
+    ) {
+        Set<User> likes = message.getLikes();
+
+        if (likes.contains(currentUser)) {
+            likes.remove(currentUser);
+        } else {
+            likes.add(currentUser);
+        }
+        messageRepo.save(message);
+        return "redirect:/main";
     }
 }
