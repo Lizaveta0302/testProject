@@ -110,6 +110,7 @@ public class MainController {
         return ResponseEntity.status(404).body(null);
     }
 
+
     @GetMapping("/user-messages/{user}")
     public String userMessages(
             @AuthenticationPrincipal User currentUser,
@@ -166,6 +167,14 @@ public class MainController {
             likes.add(currentUser);
         }
         messageRepo.save(message);
+        return "redirect:/main";
+    }
+
+    @GetMapping("/user-messages/clear/{message}")
+    public String clearMessage(
+            @PathVariable Long message
+    ) {
+        messageRepo.deleteById(message);
         return "redirect:/main";
     }
 }

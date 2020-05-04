@@ -259,13 +259,51 @@ body {
 /*---End Section4---*/
 
 /*---CARDS---*/
+.clear-message {
+    color: black;
+}
+
+.clear-message-div a:hover {
+    color: #686868;
+}
+.card .activator {
+    position: absolute;
+    right: 0;
+    font-size: 1.2rem;
+}
+
+.card-body a{
+    text-decoration: none;
+    color: black
+}
+
+.card-body a:hover{
+    text-decoration: none;
+    color: #272727
+}
+
+a.waves-effect, a.waves-light {
+    display: inline-block;
+}
+
+.view {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+
+.card-img-top{
+    width: 100%;
+    max-height: 250px;
+}
+
 .card-in-line {
     padding: 30px;
 }
 
-.card-image {
+/*.card-image {
     max-height: 200px;
-}
+}*/
 
 .rounded {
     max-height: 200px;
