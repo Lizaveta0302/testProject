@@ -47,7 +47,9 @@ public class MainController {
 
     @GetMapping("/main")
     public String main(
-            @RequestParam(required = false, defaultValue = "") String filter, Model model, @AuthenticationPrincipal User user) {
+            @RequestParam(required = false, defaultValue = "") String filter,
+            Model model,
+            @AuthenticationPrincipal User user) {
 
         Iterable<MessageDto> messages = messageService.messageList(filter, user);
 
@@ -55,6 +57,11 @@ public class MainController {
         model.addAttribute("filter", filter);
 
         return "main";
+    }
+
+    @GetMapping("/info")
+    public String info() {
+        return "info";
     }
 
     @PostMapping("/main")
@@ -176,5 +183,21 @@ public class MainController {
     ) {
         messageRepo.deleteById(message);
         return "redirect:/main";
+    }
+
+
+    @GetMapping("/review/{message}")
+    public String review(
+            Model model,
+            @AuthenticationPrincipal User user,
+            @PathVariable Message message
+    ) {
+
+        Iterable<MessageDto> messages = messageService.messageList(message.getTag(),user);
+
+        model.addAttribute("messageList", messages);
+        model.addAttribute("message", message);
+
+        return "review";
     }
 }

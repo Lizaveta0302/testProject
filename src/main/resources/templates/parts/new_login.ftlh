@@ -5,10 +5,10 @@
             <form class="form" action="${path}" method="post" <#if isRegisterForm>enctype="multipart/form-data"</#if>>
                 <div class="card card-login card-hidden">
                     <div class="card-header card-header-primary text-center">
-                        <h4 class="card-title"><#if isRegisterForm>Registration<#else>Login</#if></h4>
+                        <h4 class="card-title"><#if isRegisterForm>Регистрация<#else>Вход</#if></h4>
                     </div>
                     <div class="card-body ">
-                        <p class="card-description text-center" style="color: #999;">Fill out the form</p>
+                        <p class="card-description text-center" style="color: #999;">Заполните форму</p>
                         <span class="bmd-form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -67,7 +67,7 @@
                         </span>
                             <div class="form-group" style="margin-top: 25px">
                                 <div class="custom-file">
-                                    <label class="custom-file-label" for="uploadfile">Choose image</label>
+                                    <label class="custom-file-label" for="uploadfile">Фотография</label>
                                     <input type="file" class="custom-file-input" name="uploadfile" id="uploadfile"
                                            placeholder="Upload image">
                                 </div>
@@ -76,11 +76,11 @@
                     </div>
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                     <div class="add-new-ref mb-1">
-                        <#if !isRegisterForm><a href="/registration">Add new user</a></#if>
+                        <#if !isRegisterForm><a href="/registration">Добавить нового пользователя</a></#if>
                     </div>
                     <div class="card-footer justify-content-center">
                         <button type="submit"
-                                class="btn btn-rose btn-link btn-lg"><#if isRegisterForm>Create<#else>Sign In</#if></button>
+                                class="btn btn-rose btn-link btn-lg"><#if isRegisterForm>Создать<#else>Войти</#if></button>
                     </div>
                 </div>
             </form>
@@ -91,6 +91,6 @@
 <#macro logout>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button class="btn btn-light" type="submit"><#if user??>Sign Out<#else>Log in</#if></button>
+        <button class="btn btn-light" type="submit"><#if user??>Выйти<#else>Войти</#if></button>
     </form>
 </#macro>

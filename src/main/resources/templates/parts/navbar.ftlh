@@ -14,20 +14,21 @@
             </li>
             <#if user??>
                 <li class="nav-item">
-                    <a class="nav-link" href="/main">Messages<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/main">Отзывы<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user-messages/${currentUserId}">My Messages<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/user-messages/${currentUserId}">Мои отзывы<span
+                                class="sr-only">(current)</span></a>
                 </li>
             </#if>
             <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user">User list<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/user">Список пользователей<span class="sr-only">(current)</span></a>
                 </li>
             </#if>
             <#if user??>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/profile">Profile<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/user/profile">Профиль<span class="sr-only">(current)</span></a>
                 </li>
             </#if>
         </ul>
@@ -38,9 +39,11 @@
             <div>
                 <div class="navbar-text mr-3 avatar">
                     <#if user.file??>
-                        <a href="/user/private-cabinet"> <img src="/api/file/${user.file.id}" class="round"></a>
+                        <a href="/user/private-cabinet"> <img src="/api/file/${user.file.id}" alt="Личный кабинет"
+                                                              class="round"></a>
                     <#else>
-                        <a href="/user/private-cabinet"> <img src="/static/image/ava.png" class="round"></a>
+                        <a href="/user/private-cabinet"> <img src="/static/image/ava.png" alt="Личный кабинет"
+                                                              class="round"></a>
                     </#if>
                 </div>
             </div>

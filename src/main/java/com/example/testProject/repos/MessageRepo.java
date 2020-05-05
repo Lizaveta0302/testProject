@@ -18,7 +18,7 @@ public interface MessageRepo extends CrudRepository<Message, Long> {
             "   sum(case when ml = :user then 1 else 0 end) > 0" +
             ") " +
             "from Message m left join m.likes ml " +
-            "group by m")
+            "group by m order by m.likes.size desc")
     Iterable<MessageDto> findAll(@Param("user") User user);
 
     @Query("select new com.example.testProject.entity.dto.MessageDto(" +

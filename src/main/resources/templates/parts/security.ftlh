@@ -10,7 +10,7 @@ known = Session.SPRING_SECURITY_CONTEXT??
     >
 <#else>
     <#assign
-    name = "Please, log in"
+    name = "Пожалуйста, войдите"
     isAdmin = false
     currentUserId = -1
     >

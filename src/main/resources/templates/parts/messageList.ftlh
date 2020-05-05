@@ -34,12 +34,13 @@
                                 style="vertical-align: text-bottom"> ${message.likes}</span></a>
                         </#if>
                         <!-- Title -->
-                        <h6 style="font-weight: 400" class="card-title">#${message.tag}</h6>
+                        <h6 style="font-weight: 400; max-width: 200px;" class="card-title">#${message.tag}</h6>
                         <hr>
                         <!-- Text -->
-                        <p class="card-text">${message.text}</p>
+                        <p class="card-text" style="overflow: auto;height: 100px;">${message.text}</p>
                         <!-- Link -->
-                        <a href="#" class="black-text d-flex justify-content-end">
+
+                        <a href="/review/${message.id}" class="black-text d-flex justify-content-end">
                             <h6 style="font-weight: 400;">Read more
                                 <i class="material-icons" style="vertical-align: middle">keyboard_arrow_right</i></h6>
                         </a>
