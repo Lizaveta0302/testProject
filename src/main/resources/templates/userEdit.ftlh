@@ -1,9 +1,9 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    User editor
+    Редактирование пользователя
     <form action="/user" method="post">
-        <input type="text" name="username" value="${user.username}">
+        <input class="form-control" style="width: 200px;margin-bottom: 15px;margin-top: 10px" type="text" name="username" value="${user.username}">
         <#list roles as role>
             <div>
                 <label>
@@ -14,6 +14,6 @@
         </#list>
         <input type="hidden" value="${user.id}" name="userId">
         <input type="hidden" value="${_csrf.token}" name="_csrf">
-        <button type="submit">Save</button>
+        <button class="btn btn-light" type="submit">Сохранить</button>
     </form>
 </@c.page>

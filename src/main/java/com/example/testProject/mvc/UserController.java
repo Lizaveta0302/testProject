@@ -4,12 +4,15 @@ import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Role;
 import com.example.testProject.entity.User;
 import com.example.testProject.repos.FileRepository;
+import com.example.testProject.repos.UserRepo;
 import com.example.testProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +27,9 @@ public class UserController {
 
     @Autowired
     private FileRepository fileRepository;
+
+    @Autowired
+    private UserRepo userRepo;
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
@@ -46,7 +52,19 @@ public class UserController {
             @RequestParam String username,
             @RequestParam Map<String, String> form,
             @RequestParam("userId") User user) {
-        userService.saveUser(user, username, form);
+        User user1 = userRepo.findByUsername(username);
+
+        if (user1 == null && StringUtils.isEmpty(username)) {
+            userService.saveUser(user, username, form);
+        }
+        return "redirect:/user";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("delete/{user}")
+    public String userDelete(
+            @PathVariable Long user) {
+        userService.userDelete(user);
         return "redirect:/user";
     }
 
@@ -71,7 +89,7 @@ public class UserController {
             user.setFile(fileModel);
         }
         userService.updateProfile(/*email,*/password, user);
-        return "redirect:/user/profile";
+        return "redirect:/user/private-cabinet";
     }
 
     @GetMapping("subscribe/{user}")

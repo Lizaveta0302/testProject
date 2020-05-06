@@ -84,6 +84,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void saveUser(User user, String username, Map<String, String> form) {
+
         user.setUsername(username);
 
         Set<String> roles = Arrays.stream(Role.values())
@@ -98,6 +99,11 @@ public class UserService implements UserDetailsService {
             }
         }
         userRepo.save(user);
+    }
+
+
+    public void userDelete(Long user) {
+        userRepo.deleteById(user);
     }
 
     public void updateProfile(/*String email,*/ String password, User user) throws IOException {

@@ -6,6 +6,7 @@ import com.example.testProject.entity.User;
 import com.example.testProject.entity.dto.MessageDto;
 import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.MessageRepo;
+import com.example.testProject.repos.UserRepo;
 import com.example.testProject.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -34,6 +35,9 @@ public class MainController {
     private MessageRepo messageRepo;
 
     @Autowired
+    private UserRepo userRepo;
+
+    @Autowired
     private MessageService messageService;
 
     @Autowired
@@ -60,7 +64,9 @@ public class MainController {
     }
 
     @GetMapping("/info")
-    public String info() {
+    public String info(Model model) {
+        User admin = userRepo.findByUsername("admin");
+        model.addAttribute("admin", admin);
         return "info";
     }
 

@@ -117,7 +117,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5" style="padding-left: 40px">
-                        <h2 class="title-sec3">Working is a pleasure</h2>
+                        <h2 class="title-sec3">Выбор похода</h2>
                         <div class="info info-horizontal">
                             <div class="icon icon-primary icon-circle">
                                 <i>
@@ -126,11 +126,10 @@
                             </div>
                             <div class="description">
                                 <h4 class="info-title">
-                                    Hundreds of Components
+                                    Отслеживание
                                 </h4>
                                 <p>
-                                    The moment you use Now UI Kit, you know you’ve never felt anything like it. With
-                                    a single use lets you do more than ever before.
+                                    Пользователям сайта доступна такая функция, как «Отслеживание» выбранного интересного маршрута похода до тех пор, пока вы не решились, не определились со своим участием в этом походе, можно просматривать отзывы других пользователей.
                                 </p>
                             </div>
                         </div>
@@ -142,11 +141,10 @@
                             </div>
                             <div class="description">
                                 <h4 class="info-title">
-                                    Fast Prototyping
+                                    Бронь
                                 </h4>
                                 <p>
-                                    Divide details about your product or agency work into parts. Write a few lines
-                                    about each one. A paragraph describing a feature.
+                                    После того, как вы выбрали путешествие, непосредственно на странице похода, напротив выбранной даты, смело нажимайте кнопку «Бронь» (самостоятельное бронирование места в походе доступно только зарегистрированным пользователям на сайте).
                                 </p>
                             </div>
                         </div>
@@ -158,11 +156,11 @@
                             </div>
                             <div class="description">
                                 <h4 class="info-title">
-                                    Easy to Use
+                                    Подготовка к походу
                                 </h4>
                                 <p>
-                                    Divide details about your product or agency work into parts. Write a few lines
-                                    about each one. A paragraph describing a feature.
+                                    В большинстве случаев в стоимость походов входит место в палатке (если не указано иное). Остальное туристское снаряжение необходимо подготовить к походу самостоятельно.
+                                    Если требуется проконсультировать по этим вопросам сможем мы или наши менеджеры. Все данные для связи можно найти во вкладке о клубе.
                                 </p>
                             </div>
                         </div>
