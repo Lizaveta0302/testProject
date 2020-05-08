@@ -2,9 +2,11 @@ package com.example.testProject.mvc;
 
 import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Role;
+import com.example.testProject.entity.Supervisor;
 import com.example.testProject.entity.User;
 import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.UserRepo;
+import com.example.testProject.service.SupervisorService;
 import com.example.testProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -54,7 +56,7 @@ public class UserController {
             @RequestParam("userId") User user) {
         User user1 = userRepo.findByUsername(username);
 
-        if (user1 == null && StringUtils.isEmpty(username)) {
+        if (user1 == null && !StringUtils.isEmpty(username)) {
             userService.saveUser(user, username, form);
         }
         return "redirect:/user";
@@ -139,4 +141,5 @@ public class UserController {
 
         return "privateCabinet";
     }
+
 }

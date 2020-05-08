@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="col-md-7">
-                        <div class="table-container">
+                        <div class="table-container" style="margin-top: 200px;margin-left: 50px">
                             <img src="/static/image/ipad2-sec3.png" alt="">
                         </div>
                     </div>

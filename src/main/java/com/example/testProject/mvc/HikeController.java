@@ -32,7 +32,7 @@ public class HikeController {
     private MessageRepo messageRepo;
 
 
-    @GetMapping("/hikes")
+    @GetMapping("/hikess")
     public String hikes(Model model) {
 
         Iterable<Message> messages = messageRepo.findAll();
