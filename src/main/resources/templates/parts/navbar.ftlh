@@ -36,7 +36,7 @@
             </#if>
         </ul>
         <div class="navbar-text mr-3">
-            ${name}
+            <a <#if user??>href="/user-messages/${user.id}"</#if>>${name}</a>
         </div>
         <#if user??>
             <div>

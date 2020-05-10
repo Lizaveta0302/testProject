@@ -38,16 +38,8 @@ public class SupervisorController {
         return "supervisors";
     }
 
-    @GetMapping("/hikes")
-    public String supervisor(Model model) {
-
-        Iterable<Supervisor> supervisors = supervisorService.supervisorList();
-        model.addAttribute("supervisors", supervisors);
-        return "hikes";
-    }
-
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping("/hikes")
+    @PostMapping("/addSupervisor")
     public String addSupervisor(
             @RequestParam String name,
             @RequestParam String last_name,
@@ -65,7 +57,7 @@ public class SupervisorController {
             user.setSupervisor(supervisor);
             userService.addUser(user);
         }
-        return "redirect:/hikes";
+        return "redirect:/supervisors";
     }
 
 

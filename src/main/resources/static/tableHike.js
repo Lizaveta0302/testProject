@@ -1,9 +1,10 @@
 var table = $('#example').DataTable();
-var data = table.column(4).data();
+var data = table.column(5).data();
 
 $(document).ready(function () {
     $('#example').DataTable({
         "columns": [
+            null,
             null,
             null,
             null,
@@ -27,7 +28,7 @@ $(document).ready(function () {
                 exportOptions: {
                     format: {
                         body: function (data, row, column, node) {
-                            return column === 4 ?
+                            return column === 5 ?
                                 'http://localhost:5000/hikes' :
                                 data;
                         }
@@ -45,7 +46,7 @@ $(document).ready(function () {
                 exportOptions: {
                     format: {
                         body: function (data, row, column, node) {
-                            return column === 4 ?
+                            return column === 5 ?
                                 '<a href="http://rtss.by/images/reports/2019shipunov.pdf">' + data + '</a>' :
                                 data;
                         }

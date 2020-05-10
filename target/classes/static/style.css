@@ -779,3 +779,20 @@ table.dataTable thead .sorting_desc_disabled:after, table.dataTable thead .sorti
     outline: none;
 }
 /*---end hikes page---*/
+
+/*---supervisors page---*/
+.spr-list {
+    list-style: none;
+}
+
+.spr-ava {
+    margin: 20px 0;
+    width: 110px;
+    height: 110px;
+}
+
+.spr-body {
+
+}
+
+/*---end supervisors page---*/

@@ -71,18 +71,20 @@
             <th scope="col">Название</th>
             <th scope="col">Тип похода</th>
             <th scope="col">Дней</th>
-            <th scope="col">Кол-во привалов</th>
             <th scope="col">Дата</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Подробнее</th>
             <#--<th th:if="${#request.userPrincipal != null}" scope="col">Удалить</th>-->
         </tr>
         </thead>
         <tbody>
-        <#list supervisors as supervisor>
+        <#list hikes as hike>
             <tr class="table-light">
-                <th scope="row">${supervisor.name}</th>
-                <td>${supervisor.last_name}</td>
-                <td>${supervisor.patronymic}</td>
-                <td>${supervisor.phone}</td>
+                <th scope="row">${hike.name}</th>
+                <td>${hike.typeHike.types}</td>
+                <td>${hike.description}</td>
+                <td>${hike.seats}</td>
+                <td>${hike.price}</td>
                 <td><a href="http://rtss.by/images/reports/2019shipunov.pdf">Подробнее</a></td>
             </tr>
         </#list>

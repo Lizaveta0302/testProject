@@ -15,19 +15,19 @@ public class Supervisor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long supervisor_id;
     @NotBlank(message = "Please fill the name")
-    @Length(max = 20, message = "Message too long (more than 20 symbols)")
+    @Length(max = 20, message = "name too long (more than 20 symbols)")
     private String name;
     @NotBlank(message = "Please fill the last name")
-    @Length(max = 20, message = "Message too long (more than 20 symbols)")
+    @Length(max = 20, message = "last_name too long (more than 20 symbols)")
     private String last_name;
     @NotBlank(message = "Please fill the patronymic")
-    @Length(max = 20, message = "Message too long (more than 20 symbols)")
+    @Length(max = 20, message = "patronymic too long (more than 20 symbols)")
     private String patronymic;
     @NotBlank(message = "Please fill the phone")
-    @Length(max = 20, message = "Message too long (more than 20 symbols)")
+    @Length(max = 20, message = "phone too long (more than 20 symbols)")
     private String phone;
     @NotBlank(message = "Please fill the city")
-    @Length(max = 20, message = "Message too long (more than 20 symbols)")
+    @Length(max = 20, message = "city too long (more than 20 symbols)")
     private String city;
 
     public Supervisor() {
