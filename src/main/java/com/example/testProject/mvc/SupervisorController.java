@@ -51,9 +51,8 @@ public class SupervisorController {
 
         User user1 = userService.getByname(user.getUsername());
         if (user1 == null) {
-            supervisorService.save(new Supervisor(name, last_name, patronymic, phone, city));
+            Supervisor supervisor = supervisorService.save(new Supervisor(name, last_name, patronymic, phone, city));
             //получить по имени руководителя взять у него id и установить для User
-            Supervisor supervisor = supervisorService.getByName(name);
             user.setSupervisor(supervisor);
             userService.addUser(user);
         }

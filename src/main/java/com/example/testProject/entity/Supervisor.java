@@ -30,6 +30,13 @@ public class Supervisor {
     @Length(max = 20, message = "city too long (more than 20 symbols)")
     private String city;
 
+/*
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "supervisor")
+    private Set<Supervisor> supervisors;
+*/
+
+
     public Supervisor() {
     }
 
@@ -40,6 +47,7 @@ public class Supervisor {
         this.phone = phone;
         this.city = city;
     }
+
 
     public Long getSupervisor_id() {
         return supervisor_id;

@@ -15,8 +15,8 @@ public class SupervisorService {
         return supervisorRepo.findAll();
     }
 
-    public void save(Supervisor supervisor) {
-         supervisorRepo.save(supervisor);
+    public Supervisor save(Supervisor supervisor) {
+         return supervisorRepo.save(supervisor);
     }
 
     public Supervisor getByName(String name){
