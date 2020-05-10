@@ -129,7 +129,7 @@ public class UserController {
     }
 
     @GetMapping("/private-cabinet")
-    public String userMessages(
+    public String privateCabinet(
             @AuthenticationPrincipal User user,
             Model model
     ) {

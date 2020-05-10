@@ -39,6 +39,10 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    public User getByname(String name) {
+        return userRepo.findByUsername(name);
+    }
+
     public boolean addUser(User user) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 

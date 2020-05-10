@@ -40,6 +40,10 @@ public class User implements UserDetails {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "author")
     private Set<Message> messages;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "supervisor_id")
+    private Supervisor supervisor;
+
     @ManyToMany
     @JoinTable(
             name = "user_subscriptions",
@@ -179,6 +183,14 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isActive();
+    }
+
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
     }
 
     @Override

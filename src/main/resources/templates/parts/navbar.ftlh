@@ -12,6 +12,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/hikes">Походы <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/supervisors">Инструкторы <span class="sr-only">(current)</span></a>
+            </li>
             <#if user??>
                 <li class="nav-item">
                     <a class="nav-link" href="/main">Отзывы<span class="sr-only">(current)</span></a>

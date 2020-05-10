@@ -83,7 +83,7 @@
                 <td>${supervisor.last_name}</td>
                 <td>${supervisor.patronymic}</td>
                 <td>${supervisor.phone}</td>
-                <td>${supervisor.city}</td>
+                <td><a href="http://rtss.by/images/reports/2019shipunov.pdf">Подробнее</a></td>
             </tr>
         </#list>
         </tbody>

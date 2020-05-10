@@ -16,9 +16,9 @@
                         <div class="view overlay">
                             <#if message.file??>
                             <#--<a href="/api/file/${message.file.id}"><b>${message.file.name}</b></a>-->
-                            <#-- <a href="/api/file/${message.file.id}">-->
+                            <a href="/api/file/${message.file.id}">
                                 <img src="/api/file/${message.file.id}" alt="" class="card-img-top">
-                            <#--</a>-->
+                            </a>
                             <#else>
                                 <img src="/static/image/No_image.png" alt="" class="card-img-top">
                             </#if>
@@ -53,7 +53,7 @@
                         </div>
                     </div>-->
                     <div class="card-footer text-muted container" style="overflow: auto">
-                        <a href="/user/private-cabinet" style="text-decoration: none;">
+                        <a href="/user-messages/${message.author.id}" style="text-decoration: none;">
                             <#if message.author.file??>
                                 <img src="/api/file/${message.author.file.id}" class="round">
                             <#else>

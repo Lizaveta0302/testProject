@@ -76,7 +76,10 @@
                 </div>
             </div>
             <div class="name-person-under-foto">
-                <h3 class="name-person"><b>${user.username}</b></h3>
+                <h3 class="name-person">
+                    <b><#if user.supervisor??>${user.supervisor.last_name} ${user.supervisor.name} ${user.supervisor.patronymic}<#else >${user.username}</#if></b>
+                </h3>
+                <p class="count-messages"><#if user.supervisor??>${user.supervisor.phone}</#if></p>
                 <p class="count-messages">${countMessages} Messages</p>
             </div>
             <div class="followers">
@@ -106,7 +109,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/hikes" method="post" >
+                                    <form action="/hikes" method="post">
                                         <fieldset>
                                             <legend>Добавление руководителя</legend>
                                             <div class="form-group">
@@ -135,6 +138,20 @@
                                                 <input type="text" class="form-control" name="city" id="city"
                                                        placeholder="Введите город">
                                             </div>
+
+
+                                            <div class="form-group">
+                                                <input type="text" name="username"
+                                                       class="form-control"
+                                                       placeholder="User name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password"
+                                                       class="form-control"
+                                                       placeholder="Password">
+                                            </div>
+
+
                                             <input type="hidden" value="${_csrf.token}" name="_csrf">
                                             <button type="submit" class="btn btn-primary">Добавить</button>
                                         </fieldset>

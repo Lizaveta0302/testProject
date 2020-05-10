@@ -12,4 +12,6 @@ import java.util.List;
 
 public interface SupervisorRepo extends CrudRepository<Supervisor, Long> {
 
+    Supervisor findByName(String name);
+
 }

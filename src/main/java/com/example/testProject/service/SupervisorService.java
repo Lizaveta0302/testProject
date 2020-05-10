@@ -2,6 +2,7 @@ package com.example.testProject.service;
 
 import com.example.testProject.entity.Supervisor;
 import com.example.testProject.repos.SupervisorRepo;
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,9 @@ public class SupervisorService {
 
     public void save(Supervisor supervisor) {
          supervisorRepo.save(supervisor);
+    }
+
+    public Supervisor getByName(String name){
+        return supervisorRepo.findByName(name);
     }
 }
