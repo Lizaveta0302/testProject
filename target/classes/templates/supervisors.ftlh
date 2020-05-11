@@ -14,7 +14,7 @@
                         <div class="p-2 spr-ava">
                             <a href="/api/file/${user.file.id}">
                                 <img src="/api/file/${user.file.id}" class="round-pc"
-                                     style="border-radius: 2px;width: 110px; height: 110px">
+                                     style="border-radius: 2px;width: 120px; height: 120px">
                             </a>
                         </div>
                         <div class="p-2 align-self-center spr-body">
@@ -26,6 +26,11 @@
                             </a>
                             ${user.supervisor.city}<br>
                             <i>${user.supervisor.phone}</i><br>
+                           <#-- <#list hikesCount as hc>-->
+                                <span>
+                                Запланировано походов: <#--${hc}-->
+                            </span>
+                           <#-- </#list>-->
                         </div>
                     </li>
                 <#elseif user.supervisor??>
@@ -33,7 +38,7 @@
                         <div class="p-2 spr-ava">
                             <a href="#">
                                 <img src="/static/image/ava.png" alt="" class="round-pc"
-                                     style="border: none;border-radius: 2px;width: 110px; height: 110px">
+                                     style="border: none;border-radius: 2px;width: 120px; height: 120px">
                             </a>
                         </div>
                         <div class="p-2 align-self-center spr-body">

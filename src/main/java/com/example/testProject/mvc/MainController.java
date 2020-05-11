@@ -2,12 +2,14 @@ package com.example.testProject.mvc;
 
 import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Message;
+import com.example.testProject.entity.Supervisor;
 import com.example.testProject.entity.User;
 import com.example.testProject.entity.dto.MessageDto;
 import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.MessageRepo;
 import com.example.testProject.repos.UserRepo;
 import com.example.testProject.service.MessageService;
+import com.example.testProject.service.SupervisorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +44,9 @@ public class MainController {
 
     @Autowired
     FileRepository fileRepository;
+
+    @Autowired
+    SupervisorService supervisorService;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -133,13 +138,18 @@ public class MainController {
     ) {
 
         //Set<Message> messages = user.getMessages();
+
         Iterable<MessageDto> messages = messageService.messageListForUser(currentUser, user);
+
+        Iterable<Supervisor> supervisors = supervisorService.supervisorList();
+
         model.addAttribute("userChannel", user);
         model.addAttribute("subscriptionsCount", user.getSubscriptions().size());
         model.addAttribute("subscribersCount", user.getSubscribers().size());
         model.addAttribute("isSubscriber", user.getSubscribers().contains(currentUser));
         model.addAttribute("messages", messages);
         model.addAttribute("message", message);
+        model.addAttribute("supervisors", supervisors);
         model.addAttribute("isCurrentUser", currentUser.equals(user));
 
         return "userMessages";
@@ -199,7 +209,7 @@ public class MainController {
             @PathVariable Message message
     ) {
 
-        Iterable<MessageDto> messages = messageService.messageList(message.getTag(),user);
+        Iterable<MessageDto> messages = messageService.messageList(message.getTag(), user);
 
         model.addAttribute("messageList", messages);
         model.addAttribute("message", message);

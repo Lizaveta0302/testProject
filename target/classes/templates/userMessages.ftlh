@@ -161,6 +161,28 @@
                                                        id="description"
                                                        placeholder="Введите описание">
                                             </div>
+                                            <div class="form-group" style="margin-bottom: 30px">
+                                                <#--<div class="dropdown show">
+                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                                       id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                                       aria-expanded="false">
+                                                        Руководитель
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                        <#list supervisors as supervisor>
+                                                            <a class="dropdown-item"  name ="supervisorSelect"
+                                                               href="#">${supervisor.last_name} ${supervisor.name}</a>
+                                                        </#list>
+                                                    </div>
+                                                </div>-->
+                                                <select class="form-control form-control-sm" id="optionsList"
+                                                        name="supervisorSelect" required>
+                                                    <#list supervisors as supervisor>
+                                                        <option value="${supervisor.supervisor_id}">${supervisor.last_name} ${supervisor.name}</option>
+                                                    </#list>
+                                                </select>
+
+                                            </div>
                                             <input type="hidden" value="${_csrf.token}" name="_csrf">
                                             <button type="submit" class="btn btn-primary">Добавить</button>
                                         </fieldset>

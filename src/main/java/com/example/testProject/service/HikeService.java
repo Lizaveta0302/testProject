@@ -16,8 +16,8 @@ public class HikeService {
         return hikeRepo.findAll();
     }
 
-    public void save(Hike hike) {
-         hikeRepo.save(hike);
+    public Hike save(Hike hike) {
+         return hikeRepo.save(hike);
     }
 
     public Hike getByName(String name){

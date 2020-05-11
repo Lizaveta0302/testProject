@@ -1,8 +1,7 @@
 package com.example.testProject.mvc;
 
-import com.example.testProject.entity.Message;
-import com.example.testProject.entity.Supervisor;
-import com.example.testProject.entity.User;
+import com.example.testProject.entity.*;
+import com.example.testProject.repos.DistributionSupervisorRepo;
 import com.example.testProject.repos.MessageRepo;
 import com.example.testProject.repos.UserRepo;
 import com.example.testProject.service.SupervisorService;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Controller
 public class SupervisorController {
@@ -28,12 +28,23 @@ public class SupervisorController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private DistributionSupervisorRepo distributionSupervisorRepo;
+
     @GetMapping("/supervisors")
     public String supervisors(Model model) {
 
         Iterable<Supervisor> supervisors = supervisorService.supervisorList();
         Iterable<User> users = userService.findAll();
         model.addAttribute("users", users);
+        ArrayList<Hike> countHikes = new ArrayList<>();
+        /*for (Supervisor sup : supervisors) {
+            Hike hike = distributionSupervisorRepo.findBySupervisor(sup).getHike();
+            if (hike != null) {
+                countHikes.add(hike);
+            }
+        }*/
+        model.addAttribute("hikesCount", countHikes);
         model.addAttribute("supervisors", supervisors);
         return "supervisors";
     }

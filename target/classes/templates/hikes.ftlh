@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css">
 
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
     <!-- Значки удаления и редактирования -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
@@ -92,11 +92,37 @@
     </table>
 </div>
 
+<hr>
+<br>
+<div class="team">
+    <div class="container">
+        <h1 class="text-center" style="font-weight: 400">Наши походы</h1>
+        <div class="row">
+            <#list hikes as hk>
+                <div class="col-lg-3 col-md-3 col-sm-12 item">
+                    <img align="center" src="" alt="Hike!" class="img-fluid">
+                    <div class="des">
+                        <p>${hk.typeHike.types}</p>
+                    </div>
+                    <span class="text-muted">${hk.description} ${hk.price} руб.</span>
+                </div>
+            </#list>
+        </div>
+    </div>
+</div>
 <hr style="margin-bottom: 10%">
 </div>
 
 <#include "parts/footer.ftlh" />
 
+<script>
+    var imgs = document.getElementsByClassName('img-fluid');
 
+    for (var i = 0; i < imgs.length; i++) {
+        var num = Math.floor(Math.random() * 10 + 1);
+        imgs[i].src = '/static/image/hike' + num + '.jpg';
+        imgs[i].alt = imgs[i].src;
+    }
+</script>
 </body>
 </html>

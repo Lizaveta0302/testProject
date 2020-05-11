@@ -67,3 +67,4 @@ $(document).ready(function () {
         $(this).removeClass('paginate_button').addClass('paginate_button btn btn-light')
     })
 });
+

@@ -52,7 +52,7 @@
         <br>
         <div class="row" style="margin-left: 10px">
             <div class="col-md-1">
-                <a href="/user/private-cabinet" style="text-decoration: none;">
+                <a href="#" style="text-decoration: none;">
                     <#if admin.file??>
                         <img src="/api/file/${admin.file.id}" class="round"
                              style="width: 100px;height: 100px;border-radius: 2px">

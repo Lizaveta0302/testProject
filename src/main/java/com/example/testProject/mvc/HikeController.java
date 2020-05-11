@@ -2,10 +2,7 @@ package com.example.testProject.mvc;
 
 import com.example.testProject.entity.*;
 import com.example.testProject.entity.dto.MessageDto;
-import com.example.testProject.repos.FileRepository;
-import com.example.testProject.repos.MessageRepo;
-import com.example.testProject.repos.TypeHikeRepo;
-import com.example.testProject.repos.UserRepo;
+import com.example.testProject.repos.*;
 import com.example.testProject.service.HikeService;
 import com.example.testProject.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +32,13 @@ public class HikeController {
     @Autowired
     private TypeHikeRepo typeHikeRepo;
 
+    @Autowired
+    private SupervisorRepo supervisorRepo;
+
+    @Autowired
+    private DistributionSupervisorRepo distributionSupervisorRepo;
+
+
 
     @GetMapping("/hikes")
     public String hikes(Model model) {
@@ -51,13 +55,18 @@ public class HikeController {
             @RequestParam Long price,
             @RequestParam String description,
             @RequestParam Long seats,
-            @RequestParam String type_hike
+            @RequestParam String type_hike,
+            @RequestParam String supervisorSelect
     ) {
 
         TypeHike typeHike = new TypeHike(type_hike);
         TypeHike typeHike1 = typeHikeRepo.save(typeHike);
-        if (typeHike1 != null) {
-            hikeService.save(new Hike(name, price, description, seats, typeHike));
+        if (typeHike1 != null && !StringUtils.isEmpty(supervisorSelect)) {
+            Hike hike = hikeService.save(new Hike(name, price, description, seats, typeHike));
+            Long id = Long.valueOf(supervisorSelect);
+            Optional<Supervisor> supervisor = supervisorRepo.findById(id);
+            DistributionSupervisor distributionSupervisor = new DistributionSupervisor(hike,supervisor.get());
+            distributionSupervisorRepo.save(distributionSupervisor);
         }
         return "redirect:/hikes";
     }

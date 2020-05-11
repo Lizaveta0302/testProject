@@ -21,7 +21,7 @@ public class Hike {
     @Size(max = 4, min = 1, message = "price should be min 1")*/
     private Long price;
     @NotBlank(message = "Please fill the description")
-    @Length(max = 20, message = "Description too long (more than 20 symbols)")
+    @Length(max = 200, message = "Description too long (more than 200 symbols)")
     private String description;
    /* @NotNull(message = "Please fill the seats")
     @Size(max = 200,min = 1, message = "Seats should be min 1")*/

@@ -1,3 +1,11 @@
+var imgs = document.getElementsByClassName('img-fluid');
+
+for (var i = 0; i < imgs.length; i++) {
+    var num = Math.floor(Math.random() * 10 + 1);
+    imgs[i].src = '/static/image/hike' + num + '.jpg';
+    imgs[i].alt = imgs[i].src;
+}
+
 var table = $('#example').DataTable();
 var data = table.column(5).data();
 
@@ -67,3 +75,4 @@ $(document).ready(function () {
         $(this).removeClass('paginate_button').addClass('paginate_button btn btn-light')
     })
 });
+
