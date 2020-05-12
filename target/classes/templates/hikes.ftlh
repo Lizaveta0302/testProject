@@ -72,8 +72,8 @@
         <tr>
             <th scope="col">Название</th>
             <th scope="col">Тип похода</th>
-            <th scope="col">Дней</th>
-            <th scope="col">Дата</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Мест</th>
             <th scope="col">Цена</th>
             <th scope="col">Подробнее</th>
             <#if isAdmin>

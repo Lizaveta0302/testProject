@@ -3,14 +3,15 @@ var data = table.column(5).data();
 
 $(document).ready(function () {
     $('#example').DataTable({
-        "columns": [
+       /* "columns": [
+            null,
             null,
             null,
             null,
             null,
             null,
             {"searchable": false}
-        ],
+        ],*/
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv',
@@ -29,7 +30,7 @@ $(document).ready(function () {
                     format: {
                         body: function (data, row, column, node) {
                             return column === 5 ?
-                                'http://localhost:5000/hikes' :
+                                'http://rtss.by/images/reports/2019shipunov.pdf' :
                                 data;
                         }
                     }
