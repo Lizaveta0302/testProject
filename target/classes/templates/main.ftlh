@@ -3,7 +3,8 @@
 
 <@c.page>
     <div class="jumbotron">
-        <p class="lead">Здесь каждый найдет занятие по душе. Познавательные походы, тренировки, только лучшие, высококвалифицированные руководители!</p>
+        <p class="lead">Здесь каждый найдет занятие по душе. Познавательные походы, тренировки, только лучшие,
+            высококвалифицированные руководители!</p>
         <hr class="my-4">
         <p>Присоединяйся и стань частью нашей большой и дружной команды!</p>
         <p class="lead">
@@ -17,7 +18,8 @@
             <form method="get" action="/main" class="form-inline">
                 <input type="text" class="form-control" name="filter" value="${filter?ifExists}"
                        placeholder="Поиск по тегу"/>
-                <button type="submit" class="btn btn-light ml-2">Найти</button>
+                <button type="submit" class="btn btn-light ml-2">Найти
+                    <span class="material-icons" style="vertical-align: text-top">search</span></button>
             </form>
         </div>
     </div>

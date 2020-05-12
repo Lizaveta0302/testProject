@@ -76,7 +76,10 @@
                     </div>
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                     <div class="add-new-ref mb-1">
-                        <#if !isRegisterForm><a href="/registration">Добавить нового пользователя</a></#if>
+                        <#if !isRegisterForm><a href="/registration">
+                            <span class="material-icons" style="vertical-align: text-bottom; margin-right: 5px">person_add</span>
+                            Добавить нового пользователя
+                        </a></#if>
                     </div>
                     <div class="card-footer justify-content-center">
                         <button type="submit"

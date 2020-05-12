@@ -33,6 +33,9 @@ public class HikeController {
     private TypeHikeRepo typeHikeRepo;
 
     @Autowired
+    private HikeRepo hikeRepo;
+
+    @Autowired
     private SupervisorRepo supervisorRepo;
 
     @Autowired
@@ -46,6 +49,15 @@ public class HikeController {
         Iterable<Hike> hikes = hikeService.hikeList();
         model.addAttribute("hikes", hikes);
         return "hikes";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/hike/clear/{hike}")
+    public String clearHike(
+            @PathVariable Long hike
+    ) {
+        hikeRepo.deleteById(hike);
+        return "redirect:/hikes";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")

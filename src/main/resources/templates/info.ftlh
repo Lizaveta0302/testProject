@@ -1,4 +1,6 @@
 <#import "parts/common.ftlh" as c>
+<#include "parts/security.ftlh">
+
 <@c.page>
     <h2 class="title">Туристический клуб "Майорка"</h2>
     <div class="info-p" style="margin-bottom: 70px;margin-left: 50px">
@@ -63,7 +65,7 @@
             </div>
             <div class="col-md-3">
                 <br>
-                <a href="/user-messages/${admin.id}"
+                <a <#if user??>href="/user-messages/${admin.id}" <#else>href="#"</#if>
                    class="author-name-a"
                    style="font-size: 18px;color: black">${admin.username}</a>
                 <div style="font-size: 12px;margin-top: -15px;margin-left: 7px">

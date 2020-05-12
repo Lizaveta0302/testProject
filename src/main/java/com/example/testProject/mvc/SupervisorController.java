@@ -3,6 +3,7 @@ package com.example.testProject.mvc;
 import com.example.testProject.entity.*;
 import com.example.testProject.repos.DistributionSupervisorRepo;
 import com.example.testProject.repos.MessageRepo;
+import com.example.testProject.repos.SupervisorRepo;
 import com.example.testProject.repos.UserRepo;
 import com.example.testProject.service.SupervisorService;
 import com.example.testProject.service.UserService;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,6 +26,9 @@ public class SupervisorController {
 
     @Autowired
     private SupervisorService supervisorService;
+
+    @Autowired
+    private SupervisorRepo supervisorRepo;
 
     @Autowired
     private UserService userService;
@@ -47,6 +52,15 @@ public class SupervisorController {
         model.addAttribute("hikesCount", countHikes);
         model.addAttribute("supervisors", supervisors);
         return "supervisors";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/supervisor/clear/{supervisor}")
+    public String clearSupervisor(
+            @PathVariable Long supervisor
+    ) {
+        supervisorRepo.deleteById(supervisor);
+        return "redirect:/supervisors";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")

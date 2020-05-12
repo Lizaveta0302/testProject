@@ -10,17 +10,14 @@
                         <!--h1 class="h1-big-title">MAJORCA</h1-->
                         <div class="under-main-text">
                             <h5 class="h5-under-big-title">
-                                It is a Majorca. Here you can do a lot
+                                Команда профессиональных и практикующих туристов в водном, пешем, горном, лыжном, вело и
+                                прочих видах туризма.
                             </h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <#-- <div class="title-text">
-             <h5>Hello, gues</h5>
-             <div>This is a Majorca</div>
-         </div>-->
     </div>
     <div class="section-2">
         <div class="background-section2">
@@ -28,10 +25,15 @@
                 <div class="row">
                     <div class="col-md-10" style="margin: auto; padding-right: 0">
                         <div class="title-sec2">
-                            <h1>Working is a pleasure</h1>
-                            <p>Woodpecker.co is a follow-up automation SaaS founded in 2015. We’re an international
-                                team of 17, speaking 4 languages. Our mission is to enable all B2B companies to
-                                connect with their Ideal Customers.</p>
+                            <h1>Нам важно ваше мнение!</h1>
+                            <p>После путешествия мы связываемся со всеми участниками, чтобы получить обратную связь. Нам
+                                важно убедиться, что вы довольны. И важно узнать, что вы посоветуете улучшить. Это
+                                помогает нам при следующих путешествиях.
+                            </p>
+                            <p>
+                                Мы уверены, что вам понравится, переходи и смотри
+                                <span class="material-icons" style="vertical-align: middle">arrow_downward</span>
+                            </p>
                         </div>
                     </div>
 
@@ -40,21 +42,21 @@
                         <img src="/static/image/ipad3.png" alt="" class="img-section-2">
                     </div>
                     </div>-->
-                    <div class="card-in-line">
+                    <div class="card-in-line" style="padding-top: 5px">
                         <div class="row">
                             <div class="col-md-3" style="margin-bottom: 20px">
                                 <div class="card">
                                     <div class="card-image sec2">
-                                        <img src="/static/image/section2.png" class="rounded">
+                                        <img src="/static/image/sec2-1.jpg" class="rounded">
                                     </div>
                                     <div class="info text-center">
                                         <#-- <div class="icon">
                                              <i class="now-ui-icons ui-1_email-85"></i>
                                          </div>-->
-                                        <h4 class="info-title">Reply detection</h4>
-                                        <p class="description">If you get a reply, further follow-ups are
-                                            automatically
-                                            stopped.</p>
+                                        <h4 class="info-title"><a href="/hikes" style="color:#000;">Походы</a></h4>
+                                        <p class="description">
+                                            Мы предлагаем большое количество походов и ставим целью привлечения большего
+                                            числа увлеченных людей.</p>
                                     </div>
                                 </div>
                             </div>
@@ -62,15 +64,18 @@
                             <div class="col-md-3" style="margin-bottom: 20px">
                                 <div class="card">
                                     <div class="card-image sec2">
-                                        <img src="/static/image/section2.png" class="rounded">
+                                        <img src="/static/image/sec-2-2.jpg" class="rounded">
                                     </div>
                                     <div class="info text-center">
                                         <div class="icon">
                                             <i class="now-ui-icons ui-1_calendar-60"></i>
                                         </div>
-                                        <h4 class="info-title">Follow-up</h4>
-                                        <p class="description">Just set a number of days that you want send a
-                                            follow-up. </p>
+                                        <h4 class="info-title"><a href="/supervisors"
+                                                                  style="color:#000;">Инструкторы</a></h4>
+                                        <p class="description">
+                                            Интересные и увлекательные походы на нашем сайте организуют и проводят наши
+                                            проверенные инструкторы.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -78,15 +83,16 @@
                             <div class="col-md-3" style="margin-bottom: 20px">
                                 <div class="card">
                                     <div class="card-image sec2">
-                                        <img src="/static/image/section2.png" class="rounded">
+                                        <img src="/static/image/sec2-3.jpg" class="rounded">
                                     </div>
                                     <div class="info text-center">
                                         <div class="icon">
                                             <i class="now-ui-icons ui-1_send"></i>
                                         </div>
-                                        <h4 class="info-title">Cold email</h4>
-                                        <p class="description">Unlimited number of prospects daily with personalized
-                                            emails.</p>
+                                        <h4 class="info-title"><a href="/login" style="color:#000;">Регистрация</a></h4>
+                                        <p class="description">
+                                            Стань участником наших походов, регистрируйся прямо сейчас, присоединяйся к
+                                            нам, мы тебя ждем!</p>
                                     </div>
                                 </div>
                             </div>
@@ -94,15 +100,16 @@
                             <div class="col-md-3" style="margin-bottom: 20px">
                                 <div class="card">
                                     <div class="card-image sec2">
-                                        <img src="/static/image/section2.png" class="rounded">
+                                        <img src="/static/image/sec2-4.jpg" class="rounded">
                                     </div>
                                     <div class="info text-center">
                                         <div class="icon">
                                             <i class="now-ui-icons ui-2_like"></i>
                                         </div>
-                                        <h4 class="info-title">Teamwork</h4>
-                                        <p class="description">You and your team won’t address the same person
-                                            twice. </p>
+                                        <h4 class="info-title"><a href="/info" style="color:#000;">О клубе</a></h4>
+                                        <p class="description">
+                                            Здесь вы можете узнать подробную информацию о клубе, узнать режим работы
+                                            клуба и как с нами связаться. </p>
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +136,9 @@
                                     Отслеживание
                                 </h4>
                                 <p>
-                                    Пользователям сайта доступна такая функция, как «Отслеживание» выбранного интересного маршрута похода до тех пор, пока вы не решились, не определились со своим участием в этом походе, можно просматривать отзывы других пользователей.
+                                    Пользователям сайта доступна такая функция, как «Отслеживание» выбранного
+                                    интересного маршрута похода до тех пор, пока вы не решились, не определились со
+                                    своим участием в этом походе, можно просматривать отзывы других пользователей.
                                 </p>
                             </div>
                         </div>
@@ -144,7 +153,9 @@
                                     Бронь
                                 </h4>
                                 <p>
-                                    После того, как вы выбрали путешествие, непосредственно на странице похода, напротив выбранной даты, смело нажимайте кнопку «Бронь» (самостоятельное бронирование места в походе доступно только зарегистрированным пользователям на сайте).
+                                    После того, как вы выбрали путешествие, непосредственно на странице похода, напротив
+                                    выбранной даты, смело нажимайте кнопку «Бронь» (самостоятельное бронирование места в
+                                    походе доступно только зарегистрированным пользователям на сайте).
                                 </p>
                             </div>
                         </div>
@@ -159,8 +170,11 @@
                                     Подготовка к походу
                                 </h4>
                                 <p>
-                                    В большинстве случаев в стоимость походов входит место в палатке (если не указано иное). Остальное туристское снаряжение необходимо подготовить к походу самостоятельно.
-                                    Если требуется проконсультировать по этим вопросам сможем мы или наши менеджеры. Все данные для связи можно найти во вкладке о клубе.
+                                    В большинстве случаев в стоимость походов входит место в палатке (если не указано
+                                    иное). Остальное туристское снаряжение необходимо подготовить к походу
+                                    самостоятельно.
+                                    Если требуется проконсультировать по этим вопросам сможем мы или наши менеджеры. Все
+                                    данные для связи можно найти во вкладке о клубе.
                                 </p>
                             </div>
                         </div>
@@ -186,12 +200,11 @@
                             </div>
                             <div class="description">
                                 <h5 class="info-title">
-                                    Save Time & Money
+                                    Если у вас изменятся планы – ничего страшного!
                                 </h5>
                                 <p class="description">
-                                    Creating your design from scratch with dedicated designers can be very
-                                    expensive.Using Now UI Kit PRO you don't have to worry about customising the
-                                    basic Bootstrap 4 design or its components.
+                                    Вы сможете скорректировать сроки путешествия или перенести свою заявку на другую
+                                    программу. Просто сообщите об этом не менее чем за 10 дней.
                                 </p>
                             </div>
                             <div class="info info-horizontal">
@@ -200,12 +213,11 @@
                                 </div>
                                 <div class="description">
                                     <h5 class="info-title">
-                                        Save Time & Money
+                                        Мы уверены, что вам понравится!
                                     </h5>
                                     <p class="description">
-                                        Creating your design from scratch with dedicated designers can be very
-                                        expensive.Using Now UI Kit PRO you don't have to worry about customising the
-                                        basic Bootstrap 4 design or its components.
+                                        Инструктора гарантируют, что всё будет именно так, как написано на сайте. Если
+                                        ваше доверие не будет оправдано, то вам будут возвращены деньги.
                                     </p>
                                 </div>
                                 <div class="info info-horizontal">
@@ -214,12 +226,12 @@
                                     </div>
                                     <div class="description">
                                         <h5 class="info-title">
-                                            Save Time & Money
+                                            Обменивайтесь лайками и подписками с другими участниками!
                                         </h5>
                                         <p class="description">
-                                            Creating your design from scratch with dedicated designers can be very
-                                            expensive.Using Now UI Kit PRO you don't have to worry about customising the
-                                            basic Bootstrap 4 design or its components.
+                                            После регистрации и авторизации вам будет доступна возможность оставлять
+                                            свои отзывы о посещенных походах
+                                            на сайте, а также просматривать и оценивать отзывы других пользователей.
                                         </p>
                                     </div>
                                 </div>

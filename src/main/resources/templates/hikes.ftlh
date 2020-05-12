@@ -7,6 +7,8 @@
     <link rel="icon" href="/static/image/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+          rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -74,6 +76,9 @@
             <th scope="col">Дата</th>
             <th scope="col">Цена</th>
             <th scope="col">Подробнее</th>
+            <#if isAdmin>
+                <th scope="col">Удалить</th>
+            </#if>
             <#--<th th:if="${#request.userPrincipal != null}" scope="col">Удалить</th>-->
         </tr>
         </thead>
@@ -86,6 +91,9 @@
                 <td>${hike.seats}</td>
                 <td>${hike.price}</td>
                 <td><a href="http://rtss.by/images/reports/2019shipunov.pdf">Подробнее</a></td>
+                <#if isAdmin>
+                    <td style="text-align: center"><a href="/hike/clear/${hike.hike_id}"><i class="fa  fa-fw fa-trash" style="font-size:20px;color: black"></i></a></td>
+                </#if>
             </tr>
         </#list>
         </tbody>
