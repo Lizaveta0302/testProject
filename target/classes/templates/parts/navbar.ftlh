@@ -1,5 +1,5 @@
 <#include "security.ftlh">
-<#import "new_login.ftlh" as l>
+<#import "login.ftlh" as l>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Majorca</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

@@ -63,6 +63,7 @@
 <body>
 
 <#include "parts/navbar.ftlh">
+<#include "parts/security.ftlh">
 
 <div class="container mt-5">
     <h1 class="page_title" style="margin-top: 30px; text-align: center;font-weight: 300">Проводимые походы</h1>
@@ -78,6 +79,9 @@
             <th scope="col">Подробнее</th>
             <#if isAdmin>
                 <th scope="col">Удалить</th>
+                <th scope="col">Забронировать</th>
+            <#elseif user??>
+                <th scope="col">Забронировать</th>
             </#if>
             <#--<th th:if="${#request.userPrincipal != null}" scope="col">Удалить</th>-->
         </tr>
@@ -92,7 +96,27 @@
                 <td>${hike.price}</td>
                 <td><a href="http://rtss.by/images/reports/2019shipunov.pdf">Подробнее</a></td>
                 <#if isAdmin>
-                    <td style="text-align: center"><a href="/hike/clear/${hike.hike_id}"><i class="fa  fa-fw fa-trash" style="font-size:20px;color: black"></i></a></td>
+                    <td style="text-align: center"><a href="/hike/clear/${hike.hike_id}"><i
+                                    class="fa  fa-fw fa-trash"
+                                    style="font-size:20px;color: black"></i></a>
+                    </td>
+                    <td style="text-align: center">
+                        <a href="/hike/reservation/${hike.hike_id}">
+                            <button class="btn btn-light">Бронь</button>
+                        </a>
+                    </td>
+                <#elseif user??>
+                    <td style="text-align: center">
+                        <#-- <#list reserves as r>
+                             <#if r.hike_id??>
+                                 <a href="/hike/cancelReservation/${hike.hike_id}">
+                                     <button class="btn btn-light">Отмена</button>
+                                 </a>
+                             <#else>-->
+                        <a href="/hike/reservation/${hike.hike_id}">
+                            <button class="btn btn-light">Бронь</button>
+                        </a>
+                    </td>
                 </#if>
             </tr>
         </#list>

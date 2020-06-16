@@ -1,9 +1,6 @@
 package com.example.testProject.mvc;
 
-import com.example.testProject.entity.FileModel;
-import com.example.testProject.entity.Message;
-import com.example.testProject.entity.Supervisor;
-import com.example.testProject.entity.User;
+import com.example.testProject.entity.*;
 import com.example.testProject.entity.dto.MessageDto;
 import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.MessageRepo;
@@ -20,15 +17,10 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -143,9 +135,19 @@ public class MainController {
 
         Iterable<Supervisor> supervisors = supervisorService.supervisorList();
 
+        Iterable<User> usersReserve = userRepo.findAll();
+        Set<User> us = new HashSet<>();
+        for (User usr : usersReserve) {
+            if (!usr.getReservations().isEmpty()) {
+                us.add(usr);
+            }
+        }
+
         model.addAttribute("userChannel", user);
         model.addAttribute("subscriptionsCount", user.getSubscriptions().size());
         model.addAttribute("subscribersCount", user.getSubscribers().size());
+        model.addAttribute("reservationsCount", user.getReservations().size());
+        model.addAttribute("usersReserve", us);
         model.addAttribute("isSubscriber", user.getSubscribers().contains(currentUser));
         model.addAttribute("messages", messages);
         model.addAttribute("message", message);

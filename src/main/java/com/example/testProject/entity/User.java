@@ -5,10 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "usr")
@@ -59,6 +56,23 @@ public class User implements UserDetails {
             inverseJoinColumns = {@JoinColumn(name = "channel_id")}
     )
     Set<User> subscriptions = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_reservation",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "hike_id")}
+    )
+    List<Hike> reservations = new ArrayList<>();
+
+
+    public List<Hike> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Hike> reservations) {
+        this.reservations = reservations;
+    }
 
     public boolean isAdmin() {
         return roles.contains(Role.ADMIN);

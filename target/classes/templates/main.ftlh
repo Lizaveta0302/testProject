@@ -1,5 +1,5 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/login.ftlh" as l>
+<#import "parts/old_login.ftlh" as l>
 
 <@c.page>
     <div class="jumbotron">

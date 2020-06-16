@@ -1,6 +1,7 @@
 package com.example.testProject.service;
 
 import com.example.testProject.entity.FileModel;
+import com.example.testProject.entity.Hike;
 import com.example.testProject.entity.Role;
 import com.example.testProject.entity.User;
 import com.example.testProject.repos.FileRepository;
@@ -23,6 +24,9 @@ import java.util.stream.Collectors;
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private HikeService hikeService;
 
     //@Autowired
     //private MailSender mailSender;
@@ -127,6 +131,34 @@ public class UserService implements UserDetailsService {
             sendMessage(user);
         }*/
     }
+
+    public void reserve(Hike hike, User currentUser) {
+        currentUser.getReservations().add(hike);
+        long seats = hike.getSeats();
+        if (seats > 0) {
+            seats--;
+        } else {
+            seats = 0;
+        }
+        hike.setSeats(seats);
+        hikeService.save(hike);
+        userRepo.save(currentUser);
+    }
+
+    public void cancel_reserve(Hike hike, User currentUser) {
+        for (Hike hk : currentUser.getReservations()) {
+            if (hk.getHike_id().equals(hike.getHike_id())) {
+                currentUser.getReservations().remove(hk);
+                long seats = hike.getSeats();
+                seats++;
+                hike.setSeats(seats);
+                hikeService.save(hike);
+                userRepo.save(currentUser);
+            }
+        }
+
+    }
+
 
     public void subscribe(User currentUser, User user) {
         user.getSubscribers().add(currentUser);

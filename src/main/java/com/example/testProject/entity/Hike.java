@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -30,7 +32,6 @@ public class Hike {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type_id")
     private TypeHike typeHike;
-
 
     public Hike() {
     }
@@ -89,5 +90,23 @@ public class Hike {
 
     public void setTypeHike(TypeHike typeHike) {
         this.typeHike = typeHike;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hike hike = (Hike) o;
+        return Objects.equals(hike_id, hike.hike_id) &&
+                Objects.equals(name, hike.name) &&
+                Objects.equals(price, hike.price) &&
+                Objects.equals(description, hike.description) &&
+                Objects.equals(seats, hike.seats) &&
+                Objects.equals(typeHike, hike.typeHike);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hike_id, name, price, description, seats, typeHike);
     }
 }

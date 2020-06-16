@@ -1,11 +1,11 @@
 package com.example.testProject.service;
 
 import com.example.testProject.entity.Hike;
-import com.example.testProject.entity.Supervisor;
 import com.example.testProject.repos.HikeRepo;
-import com.example.testProject.repos.SupervisorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class HikeService {
@@ -22,5 +22,9 @@ public class HikeService {
 
     public Hike getByName(String name){
         return hikeRepo.findByName(name);
+    }
+
+    public Optional<Hike> getById(Long id){
+        return hikeRepo.findById(id);
     }
 }

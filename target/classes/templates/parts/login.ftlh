@@ -1,84 +1,99 @@
 <#include "security.ftlh">
 <#macro login path isRegisterForm>
-    <form action="${path}" method="post" <#if isRegisterForm>enctype="multipart/form-data"</#if>>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">User Name :</label>
-            <div class="col-sm-6">
-                <input type="text" name="username"
-                       class="form-control ${(usernameError??)?string('is-invalid', '')}"
-                       value="<#if user??>${user.username}</#if>"
-                       placeholder="User name"/>
-                <#if usernameError??>
-                    <div class="invalid-feedback">
-                        ${usernameError}
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto mb-5">
+            <form class="form" action="${path}" method="post"  <#if isRegisterForm>enctype="multipart/form-data"</#if>>
+                <div class="card card-login card-hidden">
+                    <div class="card-header card-header-primary text-center">
+                        <h4 class="card-title"><#if isRegisterForm>Регистрация<#else>Вход</#if></h4>
                     </div>
-                </#if>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Password:</label>
-            <div class="col-sm-6">
-                <input type="password" name="password"
-                       class="form-control ${(passwordError??)?string('is-invalid', '')}"
-                       value="<#if user??>${user.password}</#if>"
-                       placeholder="Password"/>
-                <#if passwordError??>
-                    <div class="invalid-feedback">
-                        ${passwordError}
+                    <div class="card-body">
+                        <p class="card-description text-center" style="color: #999;">Заполните форму</p>
+                        <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">face</i>
+                      </span>
                     </div>
-                </#if>
-            </div>
-        </div>
-        <#if isRegisterForm>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Retype password:</label>
-                <div class="col-sm-6">
-                    <input type="password" name="password2"
-                           class="form-control ${(password2Error??)?string('is-invalid', '')}"
-                           placeholder="Retype password"/>
-                    <#if password2Error??>
-                        <div class="invalid-feedback">
-                            ${password2Error}
-                        </div>
-                    </#if>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="custom-file">
-                    <label class="custom-file-label" for="uploadfile">Choose image</label>
-                    <input type="file" class="custom-file-input" name="uploadfile" id="uploadfile"
-                           placeholder="Upload image">
-                </div>
-            </div>
-        </#if>
-        <#--<div class="form-group row">
-            <label class="col-sm-2 col-form-label">Email:</label>
-            <div class="col-sm-6">
-                <input type="email" name="email"
-                       class="form-control ${(emailError??)?string('is-invalid', '')}"
-                       value="<#if user??>${user.email}</#if>"
-                       placeholder="some@some.com"/>
-                <#if emailError??>
-                    <div class="invalid-feedback">
-                        ${emailError}
+                    <input type="text" name="username"
+                           class="form-control ${(usernameError??)?string('is-invalid', '')}"
+                           value="<#if user??>${user.username}</#if>"
+                           placeholder="User name">
+                       <#if usernameError??>
+                           <div class="invalid-feedback">
+                                ${usernameError}
+                           </div>
+                       </#if>
+                  </div>
+                </span>
+
+                        <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
                     </div>
-                </#if>
-            </div>
-        </div>-->
-        <#--<div class="col-sm-6">
-            <div class="g-recaptcha" data-sitekey="6LefDOQUAAAAAKVSapqc5iZ1qq6fQKPpP3ExwL8Q"></div>
-            <#if captchaError??>
-                <div class="alert alert-danger" role="alert">
-                    ${captchaError}
+                    <input type="password" name="password"
+                           class="form-control ${(passwordError??)?string('is-invalid', '')}"
+                           value="<#if user??>${user.password}</#if>"
+                           placeholder="Password">
+                       <#if passwordError??>
+                           <div class="invalid-feedback">
+                                ${passwordError}
+                           </div>
+                       </#if>
+                  </div>
+                </span>
+                        <#if isRegisterForm>
+                            <span class="bmd-form-group">
+                              <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                    <i class="material-icons">lock_outline</i>
+                                  </span>
+                                </div>
+                                <input type="password" name="password2"
+                                       class="form-control ${(password2Error??)?string('is-invalid', '')}"
+                                       value="<#if user??>${user.password}</#if>"
+                                       placeholder="Retype password">
+                                   <#if password2Error??>
+                                       <div class="invalid-feedback">
+                                            ${password2Error}
+                                       </div>
+                                   </#if>
+                              </div>
+                        </span>
+                            <div class="form-group" style="margin-top: 25px">
+                                <div class="custom-file">
+                                    <label class="custom-file-label" for="uploadfile">Фотография</label>
+                                    <input type="file" class="custom-file-input" name="uploadfile" id="uploadfile"
+                                           placeholder="Upload image">
+                                </div>
+                            </div>
+                        </#if>
+                    </div>
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <div class="add-new-ref mb-1">
+                        <#if !isRegisterForm><a href="/registration">
+                            <span class="material-icons" style="vertical-align: text-bottom; margin-right: 5px">person_add</span>
+                            Добавить нового пользователя
+                        </a></#if>
+                    </div>
+                    <div class="card-footer justify-content-center">
+                        <button type="submit"
+                                class="btn btn-rose btn-link btn-lg"><#if isRegisterForm>Создать<#else>Войти</#if></button>
+                    </div>
                 </div>
-            </#if>
-        </div>-->
-        <#--</#if>-->
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <div class="mb-1">
-            <#if !isRegisterForm><a href="/registration">Add new user</a></#if>
+            </form>
         </div>
-        <button class="btn btn-primary" type="submit"><#if isRegisterForm>Create<#else>Sign In</#if></button>
-    </form>
+    </div>
 </#macro>
 
+<#macro logout>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <button class="btn btn-light" type="submit"><#if user??>Выйти<#else>Войти</#if></button>
+    </form>
+</#macro>

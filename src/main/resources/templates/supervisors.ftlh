@@ -12,12 +12,12 @@
                 <ul class="spr-list">
                     <#list users as user>
                         <#if user.supervisor?? && user.file??>
-                            <#--<#if isAdmin>
-                                <a style="vertical-align: text-top; text-align: right" class="clear-message"
-                                   href="/supervisor/clear/${user.supervisor.supervisor_id}">
-                                    <i class="material-icons">clear</i>
-                                </a>
-                            </#if>-->
+                        <#--<#if isAdmin>
+                            <a style="vertical-align: text-top; text-align: right" class="clear-message"
+                               href="/supervisor/clear/${user.supervisor.supervisor_id}">
+                                <i class="material-icons">clear</i>
+                            </a>
+                        </#if>-->
                             <li class="d-flex flex-row ml-5 spr-li">
                                 <div class="p-2 spr-ava">
                                     <a href="/api/file/${user.file.id}">
@@ -35,11 +35,11 @@
                                     </a>
                                     ${user.supervisor.city}<br>
                                     <i>${user.supervisor.phone}</i><br>
-                                    <#-- <#list hikesCount as hc>-->
-                                    <span>
-                                Запланировано походов: <#--${hc}-->
-                            </span>
-                                    <#-- </#list>-->
+                                    <#list hikesCount as hc>
+                                        <span>
+                                            Запланировано походов: ${hc}
+                                        </span>
+                                    </#list>
                                 </div>
                             </li>
                         <#elseif user.supervisor??>
@@ -68,23 +68,23 @@
                     </#list>
                 </ul>
             </div>
-           <#-- <div class="col">
-                <div style="margin-top: 30px">
-                    <#if isAdmin>
-                        <ul style="margin-bottom: 100px">
-                            <#list supervisors as s>
-                                <li>
-                                    ${s.last_name} ${s.name}
-                                    <a style="vertical-align: text-top" class="clear-message"
-                                       href="/supervisor/clear/${s.supervisor_id}">
-                                        <i class="material-icons">clear</i>
-                                    </a>
-                                </li>
-                            </#list>
-                        </ul>
-                    </#if>
-                </div>
-            </div>-->
+            <#-- <div class="col">
+                 <div style="margin-top: 30px">
+                     <#if isAdmin>
+                         <ul style="margin-bottom: 100px">
+                             <#list supervisors as s>
+                                 <li>
+                                     ${s.last_name} ${s.name}
+                                     <a style="vertical-align: text-top" class="clear-message"
+                                        href="/supervisor/clear/${s.supervisor_id}">
+                                         <i class="material-icons">clear</i>
+                                     </a>
+                                 </li>
+                             </#list>
+                         </ul>
+                     </#if>
+                 </div>
+             </div>-->
         </div>
     </div>
 

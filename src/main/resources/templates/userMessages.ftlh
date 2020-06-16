@@ -36,10 +36,24 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col" style="margin-left: 15px">
+                <h6>Забронировано походов:</h6>
+                <a style="color: black" href="/user/reservations/${userChannel.id}/list">${reservationsCount}</a>
+            </div>
+        </div>
         <#if isAdmin && userChannel.isAdmin()>
             <div class="row">
-                <div class="col" style="margin-left: 5px">
-
+                <div class="col" style="margin-left: 15px">
+                    <h6>Забронированные походы пользователей:</h6>
+                    <#list usersReserve as usr>
+                        <a style="color: black"
+                           href="/user/reservations/${usr.id}/list">
+                            ${usr.username}
+                        </a>
+                        <br>
+                    </#list>
+                    <br>
                     <!-- Кнопка пуска модальное окно -->
                     <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">
                         Добавить руководителя
@@ -67,7 +81,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="last_name">Фамилия</label>
-                                                <input type="text" class="form-control" name="last_name" id="last_name"
+                                                <input type="text" class="form-control" name="last_name"
+                                                       id="last_name"
                                                        placeholder="Введите фамилию">
                                             </div>
                                             <div class="form-group">
@@ -114,7 +129,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col" style="margin-left: 5px">
+                <div class="col" style="margin-left: 15px">
                     <!-- Кнопка пуска модальное окно -->
                     <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1">
                         Добавить поход

@@ -2,6 +2,9 @@
 
 <@c.page>
     <h4 style="font-weight: 300;padding-bottom: 30px"> Список пользователей </h4>
+    <#if errorDelete??>
+        <p>${errorDelete}</p>
+    </#if>
     <div style="margin-bottom: 90px; width: 450px;">
         <table class="table table-hover">
             <thead>

@@ -4,7 +4,9 @@ import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Role;
 import com.example.testProject.entity.Supervisor;
 import com.example.testProject.entity.User;
+import com.example.testProject.repos.DistributionSupervisorRepo;
 import com.example.testProject.repos.FileRepository;
+import com.example.testProject.repos.SupervisorRepo;
 import com.example.testProject.repos.UserRepo;
 import com.example.testProject.service.SupervisorService;
 import com.example.testProject.service.UserService;
@@ -32,6 +34,12 @@ public class UserController {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private SupervisorRepo supervisorRepo;
+
+    @Autowired
+    private DistributionSupervisorRepo distributionSupervisorRepo;
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
@@ -65,8 +73,21 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("delete/{user}")
     public String userDelete(
-            @PathVariable Long user) {
-        userService.userDelete(user);
+            @PathVariable Long user,
+            Model model) {
+        User user1 = userRepo.findById(user).get();
+
+        if (user1.getSupervisor() != null) {
+            Supervisor supervisor = user1.getSupervisor();
+            if (distributionSupervisorRepo.findBySupervisor(supervisor) != null) {
+                model.addAttribute("errorDelete", "У данного пользователя запланированы походы, Вы не можете его удалить!");
+            } else {
+                userService.userDelete(user);
+                supervisorRepo.delete(supervisor);
+            }
+        } else {
+            userService.userDelete(user);
+        }
         return "redirect:/user";
     }
 
@@ -126,6 +147,17 @@ public class UserController {
         }
 
         return "subscriptions";
+    }
+
+    @GetMapping("reservations/{user}/list")
+    public String userList(Model model,
+                           @PathVariable User user) {
+
+        model.addAttribute("userChannel", user);
+
+        model.addAttribute("reservations", user.getReservations());
+
+        return "reservations";
     }
 
     @GetMapping("/private-cabinet")

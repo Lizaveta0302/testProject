@@ -1,4 +1,4 @@
-<a style="margin-left: 30px" class="btn btn-light" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+<a style="margin-left: 15px" class="btn btn-light" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
    aria-controls="collapseExample">
    Добавить отзыв
     <i class="material-icons-outlined" style="vertical-align: middle">create</i>
