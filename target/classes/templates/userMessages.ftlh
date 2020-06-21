@@ -4,9 +4,9 @@
 <@c.page>
     <#if !isCurrentUser>
         <#if isSubscriber>
-            <a href="/user/unsubscribe/${userChannel.id}" class="btn btn-info">Unsubscribe</a>
+            <a href="/user/unsubscribe/${userChannel.id}" class="btn btn-info">Отписаться</a>
         <#else>
-            <a href="/user/subscribe/${userChannel.id}" class="btn btn-info">Subscribe</a>
+            <a href="/user/subscribe/${userChannel.id}" class="btn btn-info">Подписаться</a>
         </#if>
     </#if>
     <#if isCurrentUser>
@@ -18,7 +18,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title">Subscriptions</div>
+                        <div class="card-title">Подписки</div>
                         <h3 class="card-text">
                             <a href="/user/subscriptions/${userChannel.id}/list">${subscriptionsCount}</a>
                         </h3>
@@ -28,7 +28,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title">Subscribers</div>
+                        <div class="card-title">Подписчики</div>
                         <h3 class="card-text">
                             <a href="/user/subscribers/${userChannel.id}/list">${subscribersCount}</a>
                         </h3>

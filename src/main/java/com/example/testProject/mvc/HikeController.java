@@ -98,7 +98,7 @@ public class HikeController {
             Model model
     ) {
         userService.cancel_reserve(hike, currentUser);
-        return "redirect:/hikes";
+        return "redirect:/main";
     }
 
 

@@ -76,7 +76,7 @@
             <th scope="col">Описание</th>
             <th scope="col">Мест</th>
             <th scope="col">Цена</th>
-            <th scope="col">Подробнее</th>
+            <!--th scope="col">Подробнее</th-->
             <#if isAdmin>
                 <th scope="col">Удалить</th>
                 <th scope="col">Забронировать</th>
@@ -94,7 +94,7 @@
                 <td>${hike.description}</td>
                 <td>${hike.seats}</td>
                 <td>${hike.price}</td>
-                <td><a href="http://rtss.by/images/reports/2019shipunov.pdf">Подробнее</a></td>
+                <!--td><a href="http://rtss.by/images/reports/2019shipunov.pdf">Подробнее</a></td-->
                 <#if isAdmin>
                     <td style="text-align: center"><a href="/hike/clear/${hike.hike_id}"><i
                                     class="fa  fa-fw fa-trash"
