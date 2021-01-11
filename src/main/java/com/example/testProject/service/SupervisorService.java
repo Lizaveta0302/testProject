@@ -1,25 +1,18 @@
 package com.example.testProject.service;
 
 import com.example.testProject.entity.Supervisor;
-import com.example.testProject.repos.SupervisorRepo;
-import net.bytebuddy.implementation.bind.annotation.Super;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class SupervisorService {
-    @Autowired
-    private SupervisorRepo supervisorRepo;
+import java.util.Optional;
 
-    public Iterable<Supervisor> supervisorList() {
-        return supervisorRepo.findAll();
-    }
+public interface SupervisorService {
 
-    public Supervisor save(Supervisor supervisor) {
-         return supervisorRepo.save(supervisor);
-    }
+    Iterable<Supervisor> supervisorList();
 
-    public Supervisor getByName(String name){
-        return supervisorRepo.findByName(name);
-    }
+    Supervisor save(Supervisor supervisor);
+
+    Supervisor getByName(String name);
+
+    Optional<Supervisor> getById(Long id);
+
+    void deleteById(Long id);
 }

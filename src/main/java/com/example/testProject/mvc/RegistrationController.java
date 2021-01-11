@@ -74,7 +74,7 @@ public class RegistrationController {
         if (isConfirmEmpty || bindingResult.hasErrors()) {
             Map<String, String> errorMap = ControllerUtils.getErrors(bindingResult);
             model.mergeAttributes(errorMap);
-            return " registration";
+            return "registration";
         }
         saveFile(user, file);
         if (!userService.addUser(user)) {

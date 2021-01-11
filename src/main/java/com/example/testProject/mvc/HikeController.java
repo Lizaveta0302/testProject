@@ -1,48 +1,35 @@
 package com.example.testProject.mvc;
 
 import com.example.testProject.entity.*;
-import com.example.testProject.entity.dto.MessageDto;
-import com.example.testProject.repos.*;
-import com.example.testProject.service.HikeService;
-import com.example.testProject.service.MessageService;
+import com.example.testProject.service.HikeServiceImpl;
+import com.example.testProject.service.SupervisorService;
 import com.example.testProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class HikeController {
 
     @Autowired
-    private HikeService hikeService;
-
-    @Autowired
-    private TypeHikeRepo typeHikeRepo;
-
-    @Autowired
-    private HikeRepo hikeRepo;
-
-    @Autowired
-    private SupervisorRepo supervisorRepo;
+    private HikeServiceImpl hikeService;
 
     @Autowired
     private UserService userService;
 
     @Autowired
-    private DistributionSupervisorRepo distributionSupervisorRepo;
-
+    private SupervisorService supervisorService;
 
     @GetMapping("/hikes")
     public String hikes(@AuthenticationPrincipal User currentUser, Model model) {
@@ -58,8 +45,7 @@ public class HikeController {
                 for (Hike h : res) {
                     if (h.getHike_id().equals(hk.getHike_id())) {
                         hks.add(hk);
-                    }
-                    else {
+                    } else {
                         hks_not_reserve.add(hk);
                     }
                 }
@@ -76,7 +62,7 @@ public class HikeController {
     public String clearHike(
             @PathVariable Long hike
     ) {
-        hikeRepo.deleteById(hike);
+        hikeService.deleteById(hike);
         return "redirect:/hikes";
     }
 
@@ -114,13 +100,13 @@ public class HikeController {
     ) {
 
         TypeHike typeHike = new TypeHike(type_hike);
-        TypeHike typeHike1 = typeHikeRepo.save(typeHike);
+        TypeHike typeHike1 = hikeService.saveTypeHike(typeHike);
         if (typeHike1 != null && !StringUtils.isEmpty(supervisorSelect)) {
             Hike hike = hikeService.save(new Hike(name, price, description, seats, typeHike));
             Long id = Long.valueOf(supervisorSelect);
-            Optional<Supervisor> supervisor = supervisorRepo.findById(id);
+            Optional<Supervisor> supervisor = supervisorService.getById(id);
             DistributionSupervisor distributionSupervisor = new DistributionSupervisor(hike, supervisor.get());
-            distributionSupervisorRepo.save(distributionSupervisor);
+            hikeService.saveDistributionSupervisor(distributionSupervisor);
         }
         return "redirect:/hikes";
     }

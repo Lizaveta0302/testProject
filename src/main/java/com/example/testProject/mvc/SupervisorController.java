@@ -1,16 +1,12 @@
 package com.example.testProject.mvc;
 
-import com.example.testProject.entity.*;
-import com.example.testProject.repos.DistributionSupervisorRepo;
-import com.example.testProject.repos.MessageRepo;
-import com.example.testProject.repos.SupervisorRepo;
-import com.example.testProject.repos.UserRepo;
-import com.example.testProject.service.SupervisorService;
+import com.example.testProject.entity.Hike;
+import com.example.testProject.entity.Supervisor;
+import com.example.testProject.entity.User;
+import com.example.testProject.service.SupervisorServiceImpl;
 import com.example.testProject.service.UserService;
-import net.bytebuddy.implementation.bind.annotation.Super;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,16 +21,10 @@ import java.util.ArrayList;
 public class SupervisorController {
 
     @Autowired
-    private SupervisorService supervisorService;
-
-    @Autowired
-    private SupervisorRepo supervisorRepo;
+    private SupervisorServiceImpl supervisorService;
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private DistributionSupervisorRepo distributionSupervisorRepo;
 
     @GetMapping("/supervisors")
     public String supervisors(Model model) {
@@ -59,7 +49,7 @@ public class SupervisorController {
     public String clearSupervisor(
             @PathVariable Long supervisor
     ) {
-        supervisorRepo.deleteById(supervisor);
+        supervisorService.deleteById(supervisor);
         return "redirect:/supervisors";
     }
 

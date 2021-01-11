@@ -1,20 +1,17 @@
 package com.example.testProject.service;
 
-import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Hike;
 import com.example.testProject.entity.Role;
 import com.example.testProject.entity.User;
-import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.UserRepo;
-import freemarker.template.utility.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.*;
@@ -26,7 +23,7 @@ public class UserService implements UserDetailsService {
     private UserRepo userRepo;
 
     @Autowired
-    private HikeService hikeService;
+    private HikeServiceImpl hikeService;
 
     //@Autowired
     //private MailSender mailSender;
@@ -47,6 +44,11 @@ public class UserService implements UserDetailsService {
         return userRepo.findByUsername(name);
     }
 
+    public Optional<User> getById(Long id) {
+        return userRepo.findById(id);
+    }
+
+    @Transactional
     public boolean addUser(User user) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
@@ -91,6 +93,7 @@ public class UserService implements UserDetailsService {
         return userRepo.findAll();
     }
 
+    @Transactional
     public void saveUser(User user, String username, Map<String, String> form) {
 
         user.setUsername(username);
@@ -114,6 +117,7 @@ public class UserService implements UserDetailsService {
         userRepo.deleteById(user);
     }
 
+    @Transactional
     public void updateProfile(/*String email,*/ String password, User user) throws IOException {
         /*boolean isEmailChanged = (email != null);
         if (isEmailChanged) {
@@ -132,6 +136,7 @@ public class UserService implements UserDetailsService {
         }*/
     }
 
+    @Transactional
     public void reserve(Hike hike, User currentUser) {
         currentUser.getReservations().add(hike);
         long seats = hike.getSeats();
@@ -145,6 +150,7 @@ public class UserService implements UserDetailsService {
         userRepo.save(currentUser);
     }
 
+    @Transactional
     public void cancel_reserve(Hike hike, User currentUser) {
         for (Hike hk : currentUser.getReservations()) {
             if (hk.getHike_id().equals(hike.getHike_id())) {

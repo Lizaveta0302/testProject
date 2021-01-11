@@ -4,16 +4,13 @@ import com.example.testProject.entity.FileModel;
 import com.example.testProject.entity.Role;
 import com.example.testProject.entity.Supervisor;
 import com.example.testProject.entity.User;
-import com.example.testProject.repos.DistributionSupervisorRepo;
 import com.example.testProject.repos.FileRepository;
-import com.example.testProject.repos.SupervisorRepo;
-import com.example.testProject.repos.UserRepo;
+import com.example.testProject.service.HikeService;
 import com.example.testProject.service.SupervisorService;
 import com.example.testProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -30,16 +27,13 @@ public class UserController {
     private UserService userService;
 
     @Autowired
+    private SupervisorService supervisorService;
+
+    @Autowired
+    private HikeService hikeService;
+
+    @Autowired
     private FileRepository fileRepository;
-
-    @Autowired
-    private UserRepo userRepo;
-
-    @Autowired
-    private SupervisorRepo supervisorRepo;
-
-    @Autowired
-    private DistributionSupervisorRepo distributionSupervisorRepo;
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
@@ -62,7 +56,7 @@ public class UserController {
             @RequestParam String username,
             @RequestParam Map<String, String> form,
             @RequestParam("userId") User user) {
-        User user1 = userRepo.findByUsername(username);
+        User user1 = userService.getByname(username);
 
         if (user1 == null && !StringUtils.isEmpty(username)) {
             userService.saveUser(user, username, form);
@@ -75,15 +69,15 @@ public class UserController {
     public String userDelete(
             @PathVariable Long user,
             Model model) {
-        User user1 = userRepo.findById(user).get();
+        User user1 = userService.getById(user).get();
 
         if (user1.getSupervisor() != null) {
             Supervisor supervisor = user1.getSupervisor();
-            if (distributionSupervisorRepo.findBySupervisor(supervisor) != null) {
+            if (hikeService.findBySupervisor(supervisor) != null) {
                 model.addAttribute("errorDelete", "У данного пользователя запланированы походы, Вы не можете его удалить!");
             } else {
                 userService.userDelete(user);
-                supervisorRepo.delete(supervisor);
+                supervisorService.deleteById(supervisor.getSupervisor_id());
             }
         } else {
             userService.userDelete(user);

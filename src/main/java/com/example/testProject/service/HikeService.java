@@ -1,30 +1,21 @@
 package com.example.testProject.service;
 
+import com.example.testProject.entity.DistributionSupervisor;
 import com.example.testProject.entity.Hike;
-import com.example.testProject.repos.HikeRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.testProject.entity.Supervisor;
 
 import java.util.Optional;
 
-@Service
-public class HikeService {
-    @Autowired
-    private HikeRepo hikeRepo;
+public interface HikeService {
 
-    public Iterable<Hike> hikeList() {
-        return hikeRepo.findAll();
-    }
+    Hike save(Hike hike);
 
-    public Hike save(Hike hike) {
-         return hikeRepo.save(hike);
-    }
+    void deleteById(Long id);
 
-    public Hike getByName(String name){
-        return hikeRepo.findByName(name);
-    }
+    Hike getByName(String name);
 
-    public Optional<Hike> getById(Long id){
-        return hikeRepo.findById(id);
-    }
+    Optional<Hike> getById(Long id);
+
+    DistributionSupervisor findBySupervisor(Supervisor supervisor);
+
 }

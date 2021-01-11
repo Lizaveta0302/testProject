@@ -6,7 +6,7 @@ import com.example.testProject.repos.FileRepository;
 import com.example.testProject.repos.MessageRepo;
 import com.example.testProject.repos.UserRepo;
 import com.example.testProject.service.MessageService;
-import com.example.testProject.service.SupervisorService;
+import com.example.testProject.service.SupervisorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +38,7 @@ public class MainController {
     FileRepository fileRepository;
 
     @Autowired
-    SupervisorService supervisorService;
+    SupervisorServiceImpl supervisorService;
 
     @GetMapping("/")
     public String home(Model model) {
